@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { readFileSync } from 'fs';
+import { parse } from 'yaml';
+
+const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
+const servicesData = parse(readFileSync('src/data/services.yaml', 'utf-8'));
+const testimonialsData = parse(readFileSync('src/data/testimonials.yaml', 'utf-8'));
+---
+
+<Layout title="Home">
+  <!-- Hero -->
+  <section class="bg-[#fbf8f2] py-20 md:py-28">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-light text-teal leading-tight mb-6">
+        {siteData.hero.headline}
+      </h1>
+      <p class="text-lg md:text-xl text-teal/80 leading-relaxed">
+        {siteData.hero.tagline}
+      </p>
+      <a href="/get-in-touch" class="inline-block mt-8 px-8 py-3 bg-salmon text-white rounded-sm font-medium hover:bg-salmon/90 transition-colors">
+        Get In Touch
+      </a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
+        <div class="md:col-span-3 space-y-6">
+          <p class="text-lg leading-relaxed">{siteData.about.intro}</p>
+          <p class="text-lg leading-relaxed italic text-teal/70">{siteData.about.story}</p>
+          <p class="text-lg leading-relaxed">{siteData.about.experience}</p>
+        </div>
+        <div class="md:col-span-2 flex justify-center">
+          <img
+            src={siteData.about.headshot}
+            alt="Kendra St. Cyr"
+            class="w-56 h-56 md:w-64 md:h-64 rounded-full object-cover shadow-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="bg-[#fbf8f2] py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-baseline justify-between mb-12">
+        <h2 class="text-3xl font-light text-teal">Services</h2>
+        <a href="/services" class="text-salmon hover:text-salmon/80 font-medium transition-colors">
+          View all &rarr;
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {servicesData.services.map((service: { title: string; description: string }) => (
+          <a href="/services" class="group p-6 bg-white border-l-4 border-green hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-teal group-hover:text-salmon transition-colors mb-2">
+              {service.title}
+            </h3>
+            <p class="text-sm text-teal/70">{service.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-light text-teal mb-12 text-center">What People Say</h2>
+      <div id="testimonial-carousel" class="relative">
+        {testimonialsData.testimonials.map((t: { quote: string; name: string; title: string; company: string }, i: number) => (
+          <div class:list={['testimonial-slide', { hidden: i !== 0 }]} data-index={i}>
+            <blockquote class="border-l-4 border-salmon pl-6 md:pl-8">
+              <p class="text-teal/80 leading-relaxed mb-6">{t.quote}</p>
+              <footer class="font-semibold text-teal">
+                {t.name}
+                <span class="block text-sm font-normal text-teal/60">{t.title}, {t.company}</span>
+              </footer>
+            </blockquote>
+          </div>
+        ))}
+        <div class="flex items-center justify-center gap-4 mt-8">
+          <button id="prev-testimonial" class="p-2 text-teal/50 hover:text-salmon transition-colors" aria-label="Previous testimonial">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <span id="testimonial-counter" class="text-sm text-teal/50">1 / {testimonialsData.testimonials.length}</span>
+          <button id="next-testimonial" class="p-2 text-teal/50 hover:text-salmon transition-colors" aria-label="Next testimonial">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const counter = document.getElementById('testimonial-counter');
+    const total = slides.length;
+    let current = 0;
+
+    function show(index: number) {
+      slides.forEach(s => s.classList.add('hidden'));
+      slides[index].classList.remove('hidden');
+      if (counter) counter.textContent = `${index + 1} / ${total}`;
+    }
+
+    document.getElementById('prev-testimonial')?.addEventListener('click', () => {
+      current = (current - 1 + total) % total;
+      show(current);
+    });
+
+    document.getElementById('next-testimonial')?.addEventListener('click', () => {
+      current = (current + 1) % total;
+      show(current);
+    });
+
+    // Auto-advance every 8 seconds
+    setInterval(() => {
+      current = (current + 1) % total;
+      show(current);
+    }, 8000);
+  </script>
+
+  <!-- Organizations -->
+  <section class="bg-[#fbf8f2] py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-light text-teal mb-4">{siteData.organizations.heading}</h2>
+      <p class="text-teal/70 mb-10">{siteData.organizations.description}</p>
+      <div class="flex flex-col items-center gap-6 md:flex-row md:justify-center md:gap-8">
+        {siteData.organizations.logos.map((logo: string) => (
+          <img src={logo} alt="Client logos" class="w-full max-w-xs md:max-w-sm rounded" />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

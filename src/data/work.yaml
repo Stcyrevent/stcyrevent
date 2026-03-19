@@ -1,0 +1,102 @@
+# ============================================
+# PAST WORK / PORTFOLIO
+# Edit this file to add or update projects
+# Add images to public/images/work/
+# ============================================
+
+intro: Over my career, I have planned and executed over 75 events, including town halls, multi-day off-sites, product launches, AGMs, and client appreciation dinners. I've also negotiated over 35 vendor contracts and secured more than 10 sponsorships for cost-effective and high-value execution.
+heading: Projects Over the Years
+subtitle: My past work reflects a focus on events that inform audiences, engage prospects, and celebrate key moments.
+
+projects:
+  - image: /images/work/client-appreciation-1.jpg
+    caption: Client Appreciation Event
+    category: Full Service Event Coordination
+
+  - image: /images/work/client-appreciation-2.jpg
+    caption: Client Appreciation Event
+    category: Full Service Event Coordination
+
+  - image: /images/work/volunteer-holiday.jpg
+    caption: Volunteer Holiday Party
+    category: Full Service Event Coordination
+
+  - image: /images/work/trade-show-1.jpg
+    caption: Trade Show Presence
+    category: Full Service Event Coordination
+
+  - image: /images/work/trade-show-2.jpg
+    caption: Trade Show Presence
+    category: Full Service Event Coordination
+
+  - image: /images/work/agm-1.jpg
+    caption: AGM
+    category: Full Service Coordination / Virtual Consultation
+
+  - image: /images/work/agm-2.jpg
+    caption: AGM
+    category: Full Service Coordination / Virtual Consultation
+
+  - image: /images/work/community-event-1.jpg
+    caption: Community Event
+    category: Pre-Event Support
+
+  - image: /images/work/community-event-2.jpg
+    caption: Community Event
+    category: Pre-Event Support
+
+  - image: /images/work/conference.jpg
+    caption: Conference
+    category: On-Site Support
+
+  - image: /images/work/awareness-event.jpg
+    caption: Awareness Event
+    category: Full Service Event Coordination
+
+  - image: /images/work/booth-activation.jpg
+    caption: In-Booth Activation
+    category: Full Service Event Coordination
+
+  - image: /images/work/offsite-1.jpg
+    caption: Offsite
+    category: Full Service Event Coordination
+
+  - image: /images/work/holiday-party.jpg
+    caption: Client Holiday Party
+    category: Full Service Event Coordination
+
+  - image: /images/work/corporate-holiday.jpg
+    caption: Corporate Holiday Party
+    category: On-Site Support
+
+  - image: /images/work/memorial-run.jpg
+    caption: Memorial Run
+    category: Pre-Event Support
+
+  - image: /images/work/bcss-panel-discussion-.jpeg
+    caption: Awareness Event - Panel Discussion
+    category: Full Service Event Coordination
+
+  - image: /images/work/bcss-stage.jpg
+    caption: Awareness Event - Stage
+    category: Full Service Event Coordination
+
+  - image: /images/work/bcss-team-pic.jpeg
+    caption: Awareness Event - Team
+    category: Full Service Event Coordination
+
+  - image: /images/work/dsf2952.jpg
+    caption: Community Event
+    category: Pre-Event Support
+
+  - image: /images/work/dsf2320.jpg
+    caption: Community Event
+    category: Pre-Event Support
+
+  - image: /images/work/img_1854_original.jpg
+    caption: Event Coordination
+    category: Full Service Event Coordination
+
+  - image: /images/work/img_8571_original.jpg
+    caption: Event Coordination
+    category: Full Service Event Coordination

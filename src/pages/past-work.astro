@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { readFileSync } from 'fs';
+import { parse } from 'yaml';
+
+const workData = parse(readFileSync('src/data/work.yaml', 'utf-8'));
+---
+
+<Layout title="Work">
+  <!-- Intro -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <h1 class="text-4xl md:text-5xl font-light text-teal mb-8">Work</h1>
+      <p class="text-lg leading-relaxed text-teal/80 mb-6">{workData.intro}</p>
+      <h2 class="text-2xl font-light text-green mt-12 mb-2">{workData.heading}</h2>
+      <p class="text-teal/70 mb-12">{workData.subtitle}</p>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="pb-16 md:pb-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+        {workData.projects.map((project: { image: string; caption: string; category: string }) => (
+          <div class="break-inside-avoid group">
+            <div class="overflow-hidden rounded bg-stone-100">
+              <img
+                src={project.image}
+                alt={project.caption}
+                class="w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+            </div>
+            <div class="mt-2 px-1">
+              <p class="font-medium text-teal text-sm">{project.caption}</p>
+              <p class="text-xs text-teal/60">{project.category}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

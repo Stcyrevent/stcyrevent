@@ -1,0 +1,42 @@
+# ============================================
+# SITE CONFIGURATION
+# Edit this file to update site-wide content
+# ============================================
+
+name: St. Cyr Event Co.
+email: stcyr.event.co@gmail.com
+location: Vancouver, BC — Operating across Canada
+copyright: "© 2025 St. Cyr Event Co. All rights reserved."
+
+# Social links (add or remove as needed)
+socials:
+  - platform: LinkedIn
+    url: https://linkedin.com/in/kendrascyr
+    icon: linkedin
+
+# Navigation links
+nav:
+  - label: Services
+    href: /services
+  - label: Work
+    href: /past-work
+  - label: Get In Touch
+    href: /get-in-touch
+
+# Homepage content
+hero:
+  headline: St. Cyr Event Co.
+  tagline: A freelance consultancy specializing in event coordination, project management, and marketing support for lean teams who need extra capacity.
+
+about:
+  intro: I help organizations plan and execute impactful events that feel thoughtful, organized, and aligned with their goals.
+  story: I chose to use my last name, St. Cyr, as the foundation of my business because it reflects how I work — with sincerity and care. Every project I take on is personal.
+  experience: With close to a decade of experience across corporate and non-profit sectors, I bring a calm, solutions-oriented approach to every engagement — whether it's a multi-day offsite, a product launch, or a community event.
+  headshot: /images/headshot.jpg
+
+organizations:
+  heading: Organizations I've Worked With
+  description: Clients, employers, and collaborators across corporate, nonprofit, and community work.
+  logos:
+    - /images/logos/client-logos-1.png
+    - /images/logos/client-logos-2.png

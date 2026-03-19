@@ -1,0 +1,32 @@
+---
+import { readFileSync } from 'fs';
+import { parse } from 'yaml';
+
+const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
+---
+
+<footer class="bg-[#fbf8f2] border-t border-cream mt-20">
+  <div class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+      <h3 class="font-semibold text-teal mb-3">Contact</h3>
+      <a href={`mailto:${siteData.email}`} class="block text-teal/80 hover:text-salmon transition-colors">
+        {siteData.email}
+      </a>
+      {siteData.socials.map((social: { platform: string; url: string }) => (
+        <a href={social.url} target="_blank" rel="noopener" class="block text-teal/80 hover:text-salmon transition-colors mt-1">
+          {social.platform}
+        </a>
+      ))}
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-teal mb-3">Location</h3>
+      <p class="text-teal/80">{siteData.location}</p>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-teal mb-3">{siteData.name}</h3>
+      <p class="text-teal/80">{siteData.copyright}</p>
+    </div>
+  </div>
+</footer>

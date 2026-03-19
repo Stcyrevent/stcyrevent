@@ -1,0 +1,47 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="St. Cyr Event Co. — Freelance event coordination, project management, and marketing support in Vancouver, BC." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+    <title>{title} | St. Cyr Event Co.</title>
+  </head>
+  <body class="font-sans text-teal bg-white">
+    <div class="flex min-h-screen">
+      <!-- Left yellow sidebar -->
+      <div class="hidden lg:block w-20 bg-cream flex-shrink-0 fixed top-0 left-0 h-full z-50"></div>
+
+      <!-- Main content centered -->
+      <div class="flex-1 lg:mx-20">
+        <Header />
+        <main>
+          <slot />
+        </main>
+        <Footer />
+      </div>
+
+      <!-- Right yellow sidebar -->
+      <div class="hidden lg:block w-20 bg-cream flex-shrink-0 fixed top-0 right-0 h-full z-50"></div>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

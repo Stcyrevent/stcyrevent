@@ -1,0 +1,44 @@
+# ============================================
+# SERVICES
+# Edit this file to update service offerings
+# ============================================
+
+intro: As your freelance partner, I help turn ideas into well-executed events through clear planning, thoughtful marketing, and dependable project management. I offer dynamic, agile support that adapts and evolves with your needs without sacrificing trust, quality, or team alignment.
+subtitle: "My services are flexible and tailored to your project's scope, duration, and deliverables:"
+
+addons: When needed, I collaborate with trusted partners to offer add-on services such as event photography, branding & creative strategy, digital & print design, web design, and social media management.
+
+services:
+  - title: Full Service Event Coordination
+    description: For teams without internal event capacity needing a dedicated event lead.
+    items:
+      - End-to-end event planning
+      - Production and logistics
+      - Budget and vendor management
+      - Program and experience design
+      - "On-site, virtual, or hybrid execution"
+
+  - title: Pre-Event Support Coordination
+    description: For teams that already have an event planner but need additional support in the final weeks.
+    items:
+      - On-site execution and real-time troubleshooting
+      - Completion of run-of-show and production details
+      - Assistance with rehearsals and briefing internal teams or speakers
+      - "Final confirmation of logistics, vendor coordination, and timeline checks"
+
+  - title: On-Site Management
+    description: "For teams needing a second person for set-up, tear-down, and everything in between."
+    items:
+      - "Day-of event execution, troubleshooting, and overall supervision"
+      - "Vendor arrival, setup, and on-site coordination"
+      - Run-of-show management and timing oversight
+      - Attendee flow and experience management
+
+  - title: Virtual Event Consultation
+    description: For teams needing expert guidance for virtual events.
+    items:
+      - "Platform setup, configuration, and management"
+      - Event planning and logistics consultation
+      - Speaker tech checks and rehearsal run-throughs
+      - Day-of virtual execution
+      - Live audience monitoring and support
