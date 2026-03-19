@@ -1,43 +1,201 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import { readFileSync } from 'fs';
 import { parse } from 'yaml';
 
 const workData = parse(readFileSync('src/data/work.yaml', 'utf-8'));
+
+// Import all work images for optimization
+const allWorkImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/images/work/*.{jpg,jpeg,png}',
+  { eager: true }
+);
+
+// Map YAML paths to imported image metadata
+const projects = workData.projects.map((project: { image: string; caption: string; category: string }) => {
+  const filename = project.image.split('/').pop();
+  const match = Object.entries(allWorkImages).find(([key]) => key.endsWith(filename!));
+  return {
+    ...project,
+    imageSrc: match ? match[1].default : null,
+  };
+});
+
+// Get unique categories
+const categories = [...new Set(workData.projects.map((p: { category: string }) => p.category))] as string[];
 ---
 
-<Layout title="Work">
+<Layout title="Work" description="Portfolio of events coordinated by St. Cyr Event Co. — corporate events, community events, conferences, and more.">
   <!-- Intro -->
-  <section class="py-16 md:py-24">
+  <section class="pt-16 pb-8 md:pt-24 md:pb-10">
     <div class="max-w-4xl mx-auto px-6">
-      <h1 class="text-4xl md:text-5xl font-light text-teal mb-8">Work</h1>
-      <p class="text-lg leading-relaxed text-teal/80 mb-6">{workData.intro}</p>
-      <h2 class="text-2xl font-light text-green mt-12 mb-2">{workData.heading}</h2>
-      <p class="text-teal/70 mb-12">{workData.subtitle}</p>
+      <h1 class="text-4xl md:text-5xl font-light text-teal mb-8 reveal">Work</h1>
+      <p class="text-lg leading-relaxed text-teal/80 mb-6 reveal">{workData.intro}</p>
+      <h2 class="text-2xl font-light text-green mt-8 mb-2 reveal">{workData.heading}</h2>
+      <p class="text-teal/70 reveal">{workData.subtitle}</p>
+    </div>
+  </section>
+
+  <!-- Category Filter -->
+  <section class="pb-6">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-wrap gap-3 reveal" id="filter-buttons">
+        <button
+          class="filter-btn px-4 py-2 rounded-sm text-sm font-medium transition-colors bg-salmon text-white"
+          data-category="all"
+        >
+          All
+        </button>
+        {categories.map((cat) => (
+          <button
+            class="filter-btn px-4 py-2 rounded-sm text-sm font-medium transition-colors bg-teal/10 text-teal hover:bg-salmon hover:text-white"
+            data-category={cat}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- Gallery -->
   <section class="pb-16 md:pb-24">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-        {workData.projects.map((project: { image: string; caption: string; category: string }) => (
-          <div class="break-inside-avoid group">
-            <div class="overflow-hidden rounded bg-stone-100">
-              <img
-                src={project.image}
-                alt={project.caption}
-                class="w-full object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-              />
+      <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6" id="gallery">
+        {projects.map((project: { image: string; caption: string; category: string; imageSrc: ImageMetadata | null }) => (
+          project.imageSrc && (
+            <div class="break-inside-avoid group gallery-item" data-category={project.category}>
+              <button
+                class="lightbox-trigger w-full text-left cursor-zoom-in"
+                data-caption={project.caption}
+                data-category={project.category}
+              >
+                <div class="overflow-hidden rounded bg-stone-100">
+                  <Image
+                    src={project.imageSrc}
+                    alt={project.caption}
+                    class="w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    width={600}
+                  />
+                </div>
+                <div class="mt-2 px-1">
+                  <p class="font-medium text-teal text-sm">{project.caption}</p>
+                  <p class="text-xs text-teal/60">{project.category}</p>
+                </div>
+              </button>
             </div>
-            <div class="mt-2 px-1">
-              <p class="font-medium text-teal text-sm">{project.caption}</p>
-              <p class="text-xs text-teal/60">{project.category}</p>
-            </div>
-          </div>
+          )
         ))}
       </div>
     </div>
   </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-20 bg-[#fbf8f2]">
+    <div class="max-w-4xl mx-auto px-6 text-center reveal">
+      <p class="text-lg text-teal/70 mb-4">Like what you see? Let's make your next event happen.</p>
+      <a href="/get-in-touch" class="inline-block px-8 py-3 bg-salmon text-white rounded-sm font-medium hover:bg-salmon/90 transition-colors">
+        Get In Touch
+      </a>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 z-[100] hidden bg-black/90 flex items-center justify-center" role="dialog" aria-modal="true">
+    <button id="lightbox-close" class="absolute top-4 right-4 text-white/80 hover:text-white p-2 z-10" aria-label="Close lightbox">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="max-w-5xl max-h-[90vh] mx-4 flex flex-col items-center">
+      <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[80vh] object-contain rounded" />
+      <div class="mt-4 text-center">
+        <p id="lightbox-caption" class="text-white font-medium"></p>
+        <p id="lightbox-category" class="text-white/60 text-sm mt-1"></p>
+      </div>
+    </div>
+  </div>
 </Layout>
+
+<script>
+  // Category filtering
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const category = (btn as HTMLElement).dataset.category;
+
+      // Update button styles
+      filterButtons.forEach((b) => {
+        b.classList.remove('bg-salmon', 'text-white');
+        b.classList.add('bg-teal/10', 'text-teal');
+      });
+      btn.classList.remove('bg-teal/10', 'text-teal');
+      btn.classList.add('bg-salmon', 'text-white');
+
+      // Filter items
+      galleryItems.forEach((item) => {
+        const el = item as HTMLElement;
+        if (category === 'all' || el.dataset.category === category) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Apply category filter from URL param (for links from services page)
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoryParam = urlParams.get('category');
+  if (categoryParam) {
+    const matchBtn = Array.from(filterButtons).find(
+      (btn) => (btn as HTMLElement).dataset.category === categoryParam
+    );
+    if (matchBtn) (matchBtn as HTMLElement).click();
+  }
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox')!;
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxCaption = document.getElementById('lightbox-caption')!;
+  const lightboxCategory = document.getElementById('lightbox-category')!;
+
+  document.querySelectorAll('.lightbox-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const img = trigger.querySelector('img')!;
+      // Use the full-size src (Astro may generate srcset)
+      const srcset = img.getAttribute('srcset');
+      let fullSrc = img.src;
+      if (srcset) {
+        const sources = srcset.split(',').map(s => s.trim());
+        fullSrc = sources[sources.length - 1].split(' ')[0];
+      }
+      lightboxImg.src = fullSrc;
+      lightboxImg.alt = (trigger as HTMLElement).dataset.caption || '';
+      lightboxCaption.textContent = (trigger as HTMLElement).dataset.caption || '';
+      lightboxCategory.textContent = (trigger as HTMLElement).dataset.category || '';
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  document.getElementById('lightbox-close')?.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>

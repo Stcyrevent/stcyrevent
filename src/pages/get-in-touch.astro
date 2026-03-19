@@ -1,17 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import { readFileSync } from 'fs';
 import { parse } from 'yaml';
 
 const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
+
+const contactHero = (await import('../assets/images/contact-hero.jpg')).default;
 ---
 
-<Layout title="Get In Touch">
+<Layout title="Get In Touch" description="Contact St. Cyr Event Co. for freelance event coordination, project management, and marketing support.">
   <section class="py-16 md:py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         <!-- Left: Text + Form -->
-        <div>
+        <div class="reveal">
           <h1 class="text-4xl md:text-5xl font-light text-teal mb-6">Contact</h1>
           <p class="text-lg leading-relaxed text-teal/80 mb-4">
             My freelance support offers more than an extra set of hands. It brings a fresh perspective, relevant experience, and a steady presence that helps events run smoothly.
@@ -68,11 +71,12 @@ const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
         </div>
 
         <!-- Right: Image -->
-        <div class="hidden md:block">
-          <img
-            src="/images/contact-hero.jpg"
-            alt="Event coordination in action"
+        <div class="hidden md:block reveal">
+          <Image
+            src={contactHero}
+            alt="Kendra St. Cyr coordinating an event"
             class="w-full h-auto rounded object-cover aspect-[9/16] max-h-[700px]"
+            width={600}
           />
         </div>
       </div>

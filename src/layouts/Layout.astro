@@ -1,12 +1,22 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { readFileSync } from 'fs';
+import { parse } from 'yaml';
 
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
 }
 
-const { title } = Astro.props;
+const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
+
+const { title, description, image } = Astro.props;
+const metaDescription = description || 'St. Cyr Event Co. — Freelance event coordination, project management, and marketing support in Vancouver, BC.';
+const ogImage = image || '/og-default.jpg';
+const pageTitle = `${title} | ${siteData.name}`;
+const canonicalUrl = Astro.url.href;
 ---
 
 <!doctype html>
@@ -14,16 +24,31 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="St. Cyr Event Co. — Freelance event coordination, project management, and marketing support in Vancouver, BC." />
+    <meta name="description" content={metaDescription} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteData.name} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
-    <title>{title} | St. Cyr Event Co.</title>
+    <title>{pageTitle}</title>
   </head>
   <body class="font-sans text-teal bg-white">
     <div class="flex min-h-screen">
       <!-- Left yellow sidebar -->
-      <div class="hidden lg:block w-20 bg-cream flex-shrink-0 fixed top-0 left-0 h-full z-50"></div>
+      <div class="hidden lg:block w-20 bg-cream flex-shrink-0 fixed top-0 left-0 h-full z-30 pointer-events-none"></div>
 
       <!-- Main content centered -->
       <div class="flex-1 lg:mx-20">
@@ -35,7 +60,7 @@ const { title } = Astro.props;
       </div>
 
       <!-- Right yellow sidebar -->
-      <div class="hidden lg:block w-20 bg-cream flex-shrink-0 fixed top-0 right-0 h-full z-50"></div>
+      <div class="hidden lg:block w-20 bg-cream flex-shrink-0 fixed top-0 right-0 h-full z-30 pointer-events-none"></div>
     </div>
   </body>
 </html>
@@ -44,4 +69,31 @@ const { title } = Astro.props;
   html {
     scroll-behavior: smooth;
   }
+
+  /* Scroll reveal animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>

@@ -1,17 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import { readFileSync } from 'fs';
 import { parse } from 'yaml';
 
 const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
 const servicesData = parse(readFileSync('src/data/services.yaml', 'utf-8'));
 const testimonialsData = parse(readFileSync('src/data/testimonials.yaml', 'utf-8'));
+
+const headshot = (await import('../assets/images/headshot.jpg')).default;
+const logoImages = await Promise.all(
+  siteData.organizations.logos.map(async (path: string) => {
+    const filename = path.split('/').pop();
+    const images = import.meta.glob<{ default: ImageMetadata }>('../assets/images/logos/*');
+    const match = Object.entries(images).find(([key]) => key.endsWith(filename!));
+    return match ? (await match[1]()).default : null;
+  })
+);
+
+const logoAltText = [
+  'Client logos including Vancouver Economic Commission, Colliers, and more',
+  'Client logos including BC Schizophrenia Society, Archway Community Services, and more',
+];
 ---
 
 <Layout title="Home">
   <!-- Hero -->
   <section class="bg-[#fbf8f2] py-20 md:py-28">
-    <div class="max-w-3xl mx-auto px-6 text-center">
+    <div class="max-w-3xl mx-auto px-6 text-center reveal">
       <h1 class="text-4xl md:text-5xl font-light text-teal leading-tight mb-6">
         {siteData.hero.headline}
       </h1>
@@ -28,16 +44,18 @@ const testimonialsData = parse(readFileSync('src/data/testimonials.yaml', 'utf-8
   <section class="py-16 md:py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
-        <div class="md:col-span-3 space-y-6">
+        <div class="md:col-span-3 space-y-6 reveal">
           <p class="text-lg leading-relaxed">{siteData.about.intro}</p>
           <p class="text-lg leading-relaxed italic text-teal/70">{siteData.about.story}</p>
           <p class="text-lg leading-relaxed">{siteData.about.experience}</p>
         </div>
-        <div class="md:col-span-2 flex justify-center">
-          <img
-            src={siteData.about.headshot}
+        <div class="md:col-span-2 flex justify-center reveal">
+          <Image
+            src={headshot}
             alt="Kendra St. Cyr"
             class="w-56 h-56 md:w-64 md:h-64 rounded-full object-cover shadow-lg"
+            width={256}
+            height={256}
           />
         </div>
       </div>
@@ -47,15 +65,15 @@ const testimonialsData = parse(readFileSync('src/data/testimonials.yaml', 'utf-8
   <!-- Services Preview -->
   <section class="bg-[#fbf8f2] py-16 md:py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="flex items-baseline justify-between mb-12">
+      <div class="flex items-baseline justify-between mb-12 reveal">
         <h2 class="text-3xl font-light text-teal">Services</h2>
         <a href="/services" class="text-salmon hover:text-salmon/80 font-medium transition-colors">
           View all &rarr;
         </a>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {servicesData.services.map((service: { title: string; description: string }) => (
-          <a href="/services" class="group p-6 bg-white border-l-4 border-green hover:shadow-md transition-shadow">
+        {servicesData.services.map((service: { title: string; description: string }, i: number) => (
+          <a href={`/services#service-${i}`} class="group p-6 bg-white border-l-4 border-green hover:shadow-md transition-shadow reveal">
             <h3 class="font-semibold text-teal group-hover:text-salmon transition-colors mb-2">
               {service.title}
             </h3>
@@ -69,8 +87,8 @@ const testimonialsData = parse(readFileSync('src/data/testimonials.yaml', 'utf-8
   <!-- Testimonials -->
   <section class="py-16 md:py-24">
     <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-3xl font-light text-teal mb-12 text-center">What People Say</h2>
-      <div id="testimonial-carousel" class="relative">
+      <h2 class="text-3xl font-light text-teal mb-12 text-center reveal">What People Say</h2>
+      <div id="testimonial-carousel" class="relative reveal">
         {testimonialsData.testimonials.map((t: { quote: string; name: string; title: string; company: string }, i: number) => (
           <div class:list={['testimonial-slide', { hidden: i !== 0 }]} data-index={i}>
             <blockquote class="border-l-4 border-salmon pl-6 md:pl-8">
@@ -96,6 +114,14 @@ const testimonialsData = parse(readFileSync('src/data/testimonials.yaml', 'utf-8
           </button>
         </div>
       </div>
+
+      <!-- CTA after testimonials (#9) -->
+      <div class="text-center mt-12 reveal">
+        <p class="text-lg text-teal/70 mb-4">Ready to bring your next event to life?</p>
+        <a href="/get-in-touch" class="inline-block px-8 py-3 bg-salmon text-white rounded-sm font-medium hover:bg-salmon/90 transition-colors">
+          Get In Touch
+        </a>
+      </div>
     </div>
   </section>
 
@@ -104,6 +130,7 @@ const testimonialsData = parse(readFileSync('src/data/testimonials.yaml', 'utf-8
     const counter = document.getElementById('testimonial-counter');
     const total = slides.length;
     let current = 0;
+    let autoTimer: ReturnType<typeof setInterval>;
 
     function show(index: number) {
       slides.forEach(s => s.classList.add('hidden'));
@@ -111,31 +138,44 @@ const testimonialsData = parse(readFileSync('src/data/testimonials.yaml', 'utf-8
       if (counter) counter.textContent = `${index + 1} / ${total}`;
     }
 
+    function resetAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => {
+        current = (current + 1) % total;
+        show(current);
+      }, 8000);
+    }
+
     document.getElementById('prev-testimonial')?.addEventListener('click', () => {
       current = (current - 1 + total) % total;
       show(current);
+      resetAuto();
     });
 
     document.getElementById('next-testimonial')?.addEventListener('click', () => {
       current = (current + 1) % total;
       show(current);
+      resetAuto();
     });
 
-    // Auto-advance every 8 seconds
-    setInterval(() => {
-      current = (current + 1) % total;
-      show(current);
-    }, 8000);
+    resetAuto();
   </script>
 
   <!-- Organizations -->
   <section class="bg-[#fbf8f2] py-16 md:py-24">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-light text-teal mb-4">{siteData.organizations.heading}</h2>
-      <p class="text-teal/70 mb-10">{siteData.organizations.description}</p>
-      <div class="flex flex-col items-center gap-6 md:flex-row md:justify-center md:gap-8">
-        {siteData.organizations.logos.map((logo: string) => (
-          <img src={logo} alt="Client logos" class="w-full max-w-xs md:max-w-sm rounded" />
+      <h2 class="text-3xl font-light text-teal mb-4 reveal">{siteData.organizations.heading}</h2>
+      <p class="text-teal/70 mb-10 reveal">{siteData.organizations.description}</p>
+      <div class="flex flex-col items-center gap-6 md:flex-row md:justify-center md:gap-8 reveal">
+        {logoImages.map((img: ImageMetadata | null, i: number) => (
+          img ? (
+            <Image
+              src={img}
+              alt={logoAltText[i] || `Partner organization logos`}
+              class="w-full max-w-xs md:max-w-sm rounded"
+              width={400}
+            />
+          ) : null
         ))}
       </div>
     </div>

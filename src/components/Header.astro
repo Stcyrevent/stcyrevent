@@ -13,8 +13,11 @@ const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
 
     <!-- Mobile menu button -->
     <button id="menu-toggle" class="md:hidden p-2 text-teal" aria-label="Toggle menu">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
 
@@ -29,19 +32,46 @@ const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
   </div>
 
   <!-- Mobile nav -->
-  <nav id="mobile-menu" class="hidden md:hidden bg-salmon/10 px-6 pb-4">
-    {siteData.nav.map((item: { label: string; href: string }) => (
-      <a href={item.href} class="block py-2 text-teal hover:text-salmon transition-colors font-medium">
-        {item.label}
-      </a>
-    ))}
+  <nav id="mobile-menu" class="md:hidden absolute left-0 right-0 top-full bg-white/95 backdrop-blur-sm border-b border-cream shadow-lg px-6 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 z-50">
+    <div class="py-4">
+      {siteData.nav.map((item: { label: string; href: string }) => (
+        <a href={item.href} class="mobile-nav-link block py-2 text-teal hover:text-salmon transition-colors font-medium">
+          {item.label}
+        </a>
+      ))}
+    </div>
   </nav>
 </header>
 
 <script>
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+  let isOpen = false;
+
+  function openMenu() {
+    isOpen = true;
+    menu!.style.maxHeight = menu!.scrollHeight + 'px';
+    menu!.style.opacity = '1';
+    hamburger!.classList.add('hidden');
+    closeIcon!.classList.remove('hidden');
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    menu!.style.maxHeight = '0';
+    menu!.style.opacity = '0';
+    hamburger!.classList.remove('hidden');
+    closeIcon!.classList.add('hidden');
+  }
+
   toggle?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  // Close menu when a nav link is clicked
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', closeMenu);
   });
 </script>

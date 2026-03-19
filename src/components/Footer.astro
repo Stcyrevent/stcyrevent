@@ -26,7 +26,7 @@ const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
 
     <div>
       <h3 class="font-semibold text-teal mb-3">{siteData.name}</h3>
-      <p class="text-teal/80">{siteData.copyright}</p>
+      <p class="text-teal/80">&copy; {new Date().getFullYear()} {siteData.name}. All rights reserved.</p>
     </div>
   </div>
 </footer>
