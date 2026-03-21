@@ -30,31 +30,33 @@ const categoryMap: Record<string, string> = {
 
       <div class="space-y-6">
         {servicesData.services.map((service: { title: string; description: string; items: string[] }, index: number) => (
-          <details id={`service-${index}`} class="group border-l-4 border-green bg-white shadow-sm reveal" open={index === 0}>
-            <summary class="flex items-center justify-between cursor-pointer p-6 bg-green/10 hover:bg-green/20 transition-colors">
+          <div id={`service-${index}`} class="accordion-item border-l-4 border-green bg-white shadow-sm reveal" data-open={index === 0 ? 'true' : 'false'}>
+            <button class="accordion-toggle flex items-center justify-between cursor-pointer p-6 bg-green/10 hover:bg-green/20 transition-colors w-full text-left">
               <h2 class="text-xl font-semibold text-teal">{service.title}</h2>
-              <svg class="w-5 h-5 text-green transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="accordion-icon w-5 h-5 text-green transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-            </summary>
-            <div class="p-6 pt-4">
-              <p class="text-teal/70 italic mb-4">{service.description}</p>
-              <ul class="space-y-2">
-                {service.items.map((item: string) => (
-                  <li class="flex items-start gap-2">
-                    <span class="text-salmon mt-1">&#x2022;</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={`/past-work?category=${encodeURIComponent(categoryMap[service.title] || service.title)}`}
-                class="inline-block mt-6 text-salmon hover:text-salmon/80 font-medium transition-colors"
-              >
-                See examples &rarr;
-              </a>
+            </button>
+            <div class="accordion-content overflow-hidden transition-all duration-400 ease-in-out" style={index === 0 ? '' : 'max-height: 0; opacity: 0;'}>
+              <div class="p-6 pt-4">
+                <p class="text-teal/70 italic mb-4">{service.description}</p>
+                <ul class="space-y-2">
+                  {service.items.map((item: string) => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-salmon mt-1">&#x2022;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={`/past-work?category=${encodeURIComponent(categoryMap[service.title] || service.title)}`}
+                  class="inline-block mt-6 text-salmon hover:text-salmon/80 font-medium transition-colors"
+                >
+                  See examples &rarr;
+                </a>
+              </div>
             </div>
-          </details>
+          </div>
         ))}
       </div>
 
@@ -66,12 +68,50 @@ const categoryMap: Record<string, string> = {
   </section>
 
   <!-- CTA -->
-  <section class="py-16 md:py-20 bg-[#fbf8f2]">
+  <section class="py-16 md:py-20 bg-salmon/10">
     <div class="max-w-4xl mx-auto px-6 text-center reveal">
-      <p class="text-lg text-teal/70 mb-4">Interested in working together? Let's chat about your next event.</p>
-      <a href="/get-in-touch" class="inline-block px-8 py-3 bg-salmon text-white rounded-sm font-medium hover:bg-salmon/90 transition-colors">
+      <p class="text-lg text-teal font-medium mb-4">Interested in working together? Let's chat about your next event.</p>
+      <a href="/get-in-touch" class="inline-block px-10 py-4 bg-salmon text-white rounded-sm font-semibold text-lg hover:bg-salmon/85 transition-colors shadow-md">
         Get In Touch
       </a>
     </div>
   </section>
 </Layout>
+
+<script>
+  document.querySelectorAll('.accordion-item').forEach((item) => {
+    const toggle = item.querySelector('.accordion-toggle')!;
+    const content = item.querySelector('.accordion-content') as HTMLElement;
+    const icon = item.querySelector('.accordion-icon') as HTMLElement;
+    const isOpen = item.getAttribute('data-open') === 'true';
+
+    // Set initial state for open items
+    if (isOpen) {
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.style.opacity = '1';
+      icon.style.transform = 'rotate(180deg)';
+    }
+
+    toggle.addEventListener('click', () => {
+      const currentlyOpen = content.style.maxHeight !== '0px' && content.style.maxHeight !== '';
+
+      if (currentlyOpen) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        requestAnimationFrame(() => {
+          content.style.maxHeight = '0';
+          content.style.opacity = '0';
+        });
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.opacity = '1';
+        icon.style.transform = 'rotate(180deg)';
+        content.addEventListener('transitionend', () => {
+          if (content.style.opacity === '1') {
+            content.style.maxHeight = 'none';
+          }
+        }, { once: true });
+      }
+    });
+  });
+</script>

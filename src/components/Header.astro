@@ -5,10 +5,10 @@ import { parse } from 'yaml';
 const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
 ---
 
-<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-cream">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b-2 border-green/30">
+  <div class="max-w-6xl mx-auto px-6 py-1 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <img src="/images/logo.png" alt={siteData.name} class="h-20 w-auto" />
+      <img src="/images/logo.png" alt={siteData.name} class="h-24 w-auto" />
     </a>
 
     <!-- Mobile menu button -->
@@ -24,7 +24,7 @@ const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
     <!-- Desktop nav -->
     <nav class="hidden md:flex items-center gap-8">
       {siteData.nav.map((item: { label: string; href: string }) => (
-        <a href={item.href} class="text-teal hover:text-salmon transition-colors font-medium">
+        <a href={item.href} class="text-teal hover:text-salmon transition-colors font-medium text-base">
           {item.label}
         </a>
       ))}
