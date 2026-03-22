@@ -147,6 +147,46 @@ Replace the file at **`public/images/logo.png`** with your new logo. Keep the sa
 
 ---
 
+## Updating Site Colors
+
+The website uses four main colors, defined in the file **`tailwind.config.mjs`**. Open this file on GitHub and look for the `colors` section:
+
+```js
+colors: {
+  salmon: '#ffad84',
+  green: '#8bbd6f',
+  cream: '#fffaba',
+  teal: '#2b4244',
+},
+```
+
+| Color name | Current value | Where it's used |
+|---|---|---|
+| `salmon` | `#ffad84` (peach/orange) | Accent color, buttons, highlights |
+| `green` | `#8bbd6f` (soft green) | Secondary accent |
+| `cream` | `#fffaba` (light yellow) | Background accents |
+| `teal` | `#2b4244` (dark green) | Dark backgrounds, text |
+
+**To change a color:**
+1. Open `tailwind.config.mjs` on GitHub
+2. Find the color you want to change (e.g. `salmon: '#ffad84'`)
+3. Replace the `#ffad84` part with your new color code — keep the quotes and the `#`
+4. Commit the change
+
+**How to get a color code:**
+- Go to [Google Color Picker](https://g.co/kgs/YbMCx3) — search "color picker" on Google
+- Pick your color and copy the **HEX** value (starts with `#`, e.g. `#ff6b35`)
+- Use that value in the config file
+
+**Example** — to change the salmon/peach color to a brighter orange:
+```js
+salmon: '#ff6b35',
+```
+
+> **Note:** The color *names* (salmon, green, cream, teal) are used throughout the website code. Only change the values (the `#...` codes), not the names themselves.
+
+---
+
 ## Important Tips
 
 - **YAML formatting matters.** Don't change the indentation (the spaces at the beginning of lines). Only change the text after the colons.
