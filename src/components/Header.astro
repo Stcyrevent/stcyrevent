@@ -24,7 +24,7 @@ const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
     <!-- Desktop nav -->
     <nav class="hidden md:flex items-center gap-8">
       {siteData.nav.map((item: { label: string; href: string }) => (
-        <a href={item.href} class="text-teal hover:text-salmon transition-colors font-medium text-base">
+        <a href={item.href} class="text-teal hover:text-salmon transition-colors font-medium text-lg">
           {item.label}
         </a>
       ))}
