@@ -24,7 +24,8 @@ const contactHero = (await import('../assets/images/contact-hero.jpg')).default;
           </p>
 
           <form
-            action="https://formspree.io/f/YOUR_FORM_ID"
+            id="contact-form"
+            action="https://formspree.io/f/mlgpynvq"
             method="POST"
             class="space-y-5"
           >
@@ -63,11 +64,23 @@ const contactHero = (await import('../assets/images/contact-hero.jpg')).default;
 
             <button
               type="submit"
+              id="submit-btn"
               class="px-10 py-4 bg-salmon text-white rounded-sm font-semibold text-lg hover:bg-salmon/85 transition-colors shadow-md"
             >
               Send Message
             </button>
           </form>
+
+          <!-- Success Message -->
+          <div id="form-success" class="hidden py-8 text-center">
+            <p class="text-2xl font-light text-teal mb-2">Thank you!</p>
+            <p class="text-lg text-teal/80">Your message has been sent. I'll be in touch soon.</p>
+          </div>
+
+          <!-- Error Message -->
+          <div id="form-error" class="hidden py-4 px-5 bg-red-50 border border-red-200 rounded-sm">
+            <p class="text-red-700">Something went wrong. Please try again or email directly at <a href="mailto:stcyr.event.co@gmail.com" class="underline">stcyr.event.co@gmail.com</a>.</p>
+          </div>
         </div>
 
         <!-- Right: Image -->
@@ -82,4 +95,36 @@ const contactHero = (await import('../assets/images/contact-hero.jpg')).default;
       </div>
     </div>
   </section>
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const successMsg = document.getElementById('form-success')!;
+  const errorMsg = document.getElementById('form-error')!;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    errorMsg.classList.add('hidden');
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+      } else {
+        throw new Error();
+      }
+    } catch {
+      errorMsg.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
+</script>
 </Layout>
