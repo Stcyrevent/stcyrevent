@@ -14,7 +14,7 @@ export default {
         'hero-bg': '#fff4ea',           // Homepage hero section
         'banner-bg': '#2b4244',           // Services & Work page hero banners
         'sidebar-bg': '#fffaba',          // Decorative left & right sidebars (Layout)
-        'footer-bg': '#fffaba40',         // Footer background
+        'footer-bg': '#fff4ea',         // Footer background
 
         // -- Backgrounds: section-level --
         'section-alt-bg': '#8bbd6f1a',    // Alternating sections: services preview (home), CTA (work page)
