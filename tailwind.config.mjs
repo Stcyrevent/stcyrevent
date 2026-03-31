@@ -6,7 +6,7 @@ export default {
       colors: {
         salmon: '#fa5c5c',
         green: '#8bbd6f',
-        cream: '#fff799',
+        cream: 'fff2c6',
         teal: '#2b4244',
       },
       fontFamily: {
