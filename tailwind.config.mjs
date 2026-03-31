@@ -5,9 +5,9 @@ export default {
     extend: {
       colors: {
         // -- Base palette --
-        salmon: '#ffad84',
+        salmon: '#fd8a6b',
         green: '#8bbd6f',
-        cream: '#fffaba',
+        cream: '#f8f7ba',
         teal: '#2b4244',
 
         // -- Backgrounds: page-level --
