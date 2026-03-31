@@ -11,10 +11,10 @@ export default {
         teal: '#2b4244',
 
         // -- Backgrounds: page-level --
-        'hero-bg': '#f1e6c9',           // Homepage hero section
+        'hero-bg': '#fcf9ea',           // Homepage hero section
         'banner-bg': '#2b4244',           // Services & Work page hero banners
         'sidebar-bg': '#fffaba',          // Decorative left & right sidebars (Layout)
-        'footer-bg': '#f1e6c9',         // Footer background
+        'footer-bg': '#fcf9ea',         // Footer background
 
         // -- Backgrounds: section-level --
         'section-alt-bg': '#8bbd6f1a',    // Alternating sections: services preview (home), CTA (work page)
