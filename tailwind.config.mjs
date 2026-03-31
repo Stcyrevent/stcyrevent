@@ -7,11 +7,11 @@ export default {
         // -- Base palette --
         salmon: '#fd8a6b',
         green: '#8bbd6f',
-        cream: '#f8f7ba',
+        cream: '#fcf596',
         teal: '#2b4244',
 
         // -- Backgrounds: page-level --
-        'hero-bg': '#fffaba66',           // Homepage hero section
+        'hero-bg': '#fff4ea',           // Homepage hero section
         'banner-bg': '#2b4244',           // Services & Work page hero banners
         'sidebar-bg': '#fffaba',          // Decorative left & right sidebars (Layout)
         'footer-bg': '#fffaba40',         // Footer background
