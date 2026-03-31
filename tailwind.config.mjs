@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        salmon: '#ffad84',
+        salmon: '#fa5c5c',
         green: '#8bbd6f',
-        cream: '#fffaba',
+        cream: '#fbef76',
         teal: '#2b4244',
       },
       fontFamily: {
