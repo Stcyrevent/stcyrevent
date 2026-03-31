@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        salmon: '#fa5c5c',
+        salmon: '#ff8f8f',
         green: '#8bbd6f',
         cream: '#f8f7ba',
         teal: '#2b4244',
