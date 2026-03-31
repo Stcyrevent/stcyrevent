@@ -193,5 +193,3 @@ salmon: '#ff6b35',
 - **Quotes in text.** If your text contains a colon `:` or special characters, wrap it in double quotes: `"Your text here"`
 - **After committing changes**, the site will automatically rebuild and deploy (this may take a minute or two).
 - **Test on the live site** after making changes to make sure everything looks right.
-
-taruns test
