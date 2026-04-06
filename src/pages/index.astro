@@ -89,7 +89,7 @@ const logoEntries = Object.entries(allLogos)
         {testimonialsData.testimonials.map((t: { quote: string; name: string; title: string; company: string }, i: number) => (
           <div class:list={['testimonial-slide', { hidden: i !== 0 }]} data-index={i}>
             <blockquote class="border-l-4 border-salmon pl-6 md:pl-8">
-              <p class="text-teal/80 leading-relaxed mb-6">{t.quote}</p>
+              <p class="text-teal/80 leading-relaxed mb-6" set:html={t.quote.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')} />
               <footer class="font-semibold text-teal">
                 {t.name}
                 <span class="block text-sm font-normal text-teal/60">{t.title}, {t.company}</span>
