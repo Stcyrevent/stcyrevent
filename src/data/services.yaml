@@ -35,7 +35,7 @@ services:
       - Attendee flow and experience management
 
   - title: Virtual Event Consultation
-    description: For teams needing expert guidance for virtual events.
+    description: For teams that need strategic support and professional insight throughout the planning process.
     items:
       - "Platform setup, configuration, and management"
       - Event planning and logistics consultation
