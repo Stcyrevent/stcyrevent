@@ -7,7 +7,7 @@ export default {
         // -- Base palette --
         salmon: '#fd8a6b',
         green: '#8bbd6f',
-        cream: '#fcf596',
+        cream: '#fcf9ea',
         teal: '#2b4244',
 
         // -- Backgrounds: page-level --
