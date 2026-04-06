@@ -13,7 +13,7 @@ export default {
         // -- Backgrounds: page-level --
         'hero-bg': '#fcf9ea',           // Homepage hero section
         'banner-bg': '#2b4244',           // Services & Work page hero banners
-        'sidebar-bg': '#fffaba',          // Decorative left & right sidebars (Layout)
+        'sidebar-bg': '#fcf596',          // Decorative left & right sidebars (Layout)
         'footer-bg': '#fcf9ea',         // Footer background
 
         // -- Backgrounds: section-level --
