@@ -16,7 +16,7 @@ const categoryMap: Record<string, string> = {
 <Layout title="Services" description="Freelance event coordination, project management, and marketing support services by St. Cyr Event Co.">
   <!-- Hero -->
   <section class="relative bg-banner-bg text-white py-20 md:py-28">
-    <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('/images/services-hero.jpg');"></div>
+    <div class="absolute inset-0 bg-cover bg-center opacity-20" style={`background-image: url('${servicesData.hero_image}');`}></div>
     <div class="relative max-w-3xl mx-auto px-6 text-center">
       <h1 class="text-4xl md:text-5xl font-light mb-6">Services</h1>
       <p class="text-lg md:text-xl leading-relaxed opacity-90">{servicesData.intro}</p>
