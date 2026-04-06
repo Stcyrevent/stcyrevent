@@ -14,7 +14,7 @@ export default {
         'hero-bg': '#fcf9ea',           // Homepage hero section
         'banner-bg': '#2b4244',           // Services & Work page hero banners
         // Decorative sidebars (split)
-        'sidebar-left-bg': '#ffffff',       // Decorative left sidebars (Layout)
+        'sidebar-left-bg': '#fff799',       // Decorative left sidebars (Layout)
         'sidebar-right-bg': '#ffffff',       // Decorative right sidebars (Layout)
         'footer-bg': '#fcf9ea',         // Footer background
 
