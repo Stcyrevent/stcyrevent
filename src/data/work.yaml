@@ -13,14 +13,42 @@ projects:
     caption: Client Appreciation Event
     category: Full Service Event Coordination
 
+  - image: /images/work/EFry Toronto_AGM-FS 1.jpeg
+    caption: Annual General Meeting/Panel Discussion
+    category: Full Service Event Coordination
+
+   - image: /images/work/BCSS_Panel 1_FS.jpeg
+    caption: Awareness Event
+    category: Full Service Event Coordination   
+    
+  - image: /images/work/Shopify_Offsite-7.jpg
+    caption: Offsite
+    category: Full Service Event Coordination
+
   - image: /images/work/PBP_Client Appreciation-2.jpg
     caption: Client Appreciation Event
     category: Full Service Event Coordination
+
+  - image: /images/work/Tempo_Community Event 8.jpg
+    caption: Community Event
+    category: Pre-Event Support  
+
+  - image: /images/work/PBP_Booth Activation-2.jpg
+    caption: Trade Show Booth Activation
+    category: Full Service Event Coordination  
+
+  - image: /images/work/EFry Toronto_Community Event 3.jpg
+    caption: Awareness Event
+    category: Pre-Event Support    
 
   - image: /images/work/PBP_Client Appreciation-3.jpg
     caption: Client Appreciation Event
     category: Full Service Event Coordination
 
+  - image: /images/work/EFry Toronto_AGM_FS.HEIC
+    caption: Annual General Meeting/Panel Discussion
+    category: Full Service Event Coordination
+  
   - image: /images/work/PBP_Client Appreciation-4.jpg
     caption: Client Appreciation Event
     category: Full Service Event Coordination
@@ -33,9 +61,17 @@ projects:
     caption: Offsite
     category: Full Service Event Coordination 
 
-  - image: /images/work/Shopify_Offsite 4.jpg
+  - image: /images/work/Small At Home Wedding_2-COVID.jpg
+    caption: Private Dinner
+    category: Full Service Event Coordination   
+
+  - image: /images/work/Shopify_Team Building.jpg
     caption: Offsite
-    category: Full Service Event Coordination 
+    category: Full Service Event Coordination   
+
+  - image: /images/work/LBMG_PNE 4.JPG
+    caption: Community Event
+    category: On-Site Management 
 
   - image: /images/work/Shopify_Offsite-2.jpg
     caption: Offsite
@@ -65,10 +101,6 @@ projects:
     caption: Community Event
     category: Pre-Event Support Coordination
 
-  - image: /images/work/BCSS_Panel 1_FS.jpeg
-    caption: Awareness Event
-    category: Full Service Event Coordination
-
   - image: /images/work/BCSS_Team Pic_FS.jpeg
     caption: Awareness Event
     category: Full Service Event Coordination 
@@ -84,10 +116,6 @@ projects:
   - image: /images/work/LBMG_PNE-2.jpg
     caption: Community Event
     category: On-Site Management 
-
-  - image: /images/work/PBP_Booth Activation-2.jpg
-    caption: Trade Show Booth Activation
-    category: Full Service Event Coordination
 
   - image: /images/work/PBP_Booth Activation-4.jpg
     caption: Trade Show Booth Activation
