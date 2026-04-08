@@ -31,15 +31,23 @@ projects:
 
   - image: /images/work/Tempo_Community Event 8.jpg
     caption: Community Event
-    category: Pre-Event Support  
+    category: Pre-Event Support Coordination  
 
   - image: /images/work/PBP_Booth Activation-2.jpg
     caption: Trade Show Booth Activation
     category: Full Service Event Coordination  
+    
+  - image: /images/work/Shopify_Offsite-5.jpg
+    caption: Offsite
+    category: Full Service Event Coordination
+    
+  - image: /images/work/Tempo_Community Event 1_PE.jpeg
+    caption: Community Event
+    category: Pre-Event Support Coordination  
 
   - image: /images/work/EFry Toronto_Community Event 3.jpg
     caption: Awareness Event
-    category: Pre-Event Support    
+    category: Pre-Event Support Coordination  
 
   - image: /images/work/PBP_Client Appreciation-3.jpg
     caption: Client Appreciation Event
@@ -85,17 +93,9 @@ projects:
     caption: Offsite
     category: Full Service Event Coordination
 
-  - image: /images/work/Shopify_Offsite-5.jpg
-    caption: Offsite
-    category: Full Service Event Coordination
-
   - image: /images/work/Shopify_Offsite-7.jpg
     caption: Offsite
     category: Full Service Event Coordination
-
-  - image: /images/work/Tempo_Community Event 1_PE.jpeg
-    caption: Community Event
-    category: Pre-Event Support Coordination
 
   - image: /images/work/Tempo_Community Event 2_PE.jpeg
     caption: Community Event
