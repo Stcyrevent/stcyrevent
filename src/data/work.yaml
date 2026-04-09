@@ -13,6 +13,10 @@ projects:
     caption: Client Appreciation Event
     category: Full Service Event Coordination
 
+  - image: /images/work/PBP_Client Appreciation Event_Pasta.PNG
+    caption: Client Appreciation Event
+    category: Full Service Event Coordination
+   
   - image: /images/work/EFry Toronto_AGM-FS 1.jpeg
     caption: Annual General Meeting/Panel Discussion
     category: Full Service Event Coordination
@@ -36,6 +40,10 @@ projects:
   - image: /images/work/PBP_Booth Activation-2.jpg
     caption: Trade Show Booth Activation
     category: Full Service Event Coordination    
+
+  - image: /images/work/EFry Toronto_AGM_Virtual 5.JPG
+    caption: Annual General Meeting/Panel Discussion 
+    category: Virtual Consultation
 
   - image: /images/work/PBP_Client Appreciation-NS.PNG
     caption: Client Appreciaition Event
@@ -93,9 +101,9 @@ projects:
     caption: Community Event
     category: Pre-Event Support Coordination
 
-  - image: /images/work/LBMG_PNE 4.JPG
-    caption: Community Event
-    category: On-Site Management 
+  - image: /images/work/PBP_Client Appreciation Event_Pasta.PNG
+    caption: Client Appreciation Event
+    category: Full Service Event Coordination
 
   - image: /images/work/Shopify_Offsite-3.jpg
     caption: Offsite
