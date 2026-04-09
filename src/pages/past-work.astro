@@ -8,7 +8,7 @@ const workData = parse(readFileSync('src/data/work.yaml', 'utf-8'));
 
 // Import all work images for optimization
 const allWorkImages = import.meta.glob<{ default: ImageMetadata }>(
-  '../assets/images/work/*.{jpg,jpeg,png}',
+  '../assets/images/work/*.{jpg,jpeg,png,JPG,JPEG,PNG}',
   { eager: true }
 );
 
