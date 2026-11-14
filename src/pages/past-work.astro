@@ -21,7 +21,7 @@ const large = await Promise.all(photos.map((p) => getImage({ src: p.src, width: 
     <p class="lg">{data.intro}</p>
   </div>
 
-  <div class="wrap" id="gallery">
+  <div class="wrap mode-grid" id="gallery">
     <div class="toolbar">
       <div class="filters" id="filters">
         <button class="on" data-f="all">All</button>
@@ -29,7 +29,7 @@ const large = await Promise.all(photos.map((p) => getImage({ src: p.src, width: 
         {sectorFilters.length > 0 && <span class="sep"></span>}
         {sectorFilters.map((s) => <button data-f={`sec:${s}`}>{s}</button>)}
       </div>
-      <div class="view"><button class="on" data-mode="viewer">Large</button><button data-mode="grid">Grid</button></div>
+      <div class="view"><button class="on" data-mode="grid">Grid</button><button data-mode="viewer">Large</button></div>
     </div>
 
     <div class="viewer">
