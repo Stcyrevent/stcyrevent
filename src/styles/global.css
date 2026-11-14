@@ -257,3 +257,15 @@ footer.site .copy { border-top: 1px solid #3a3a3a; margin-top: 40px; padding-top
 /* Smooth switch between grid and large view */
 #gallery:not(.mode-grid) .viewer, #gallery.mode-grid .gridv { animation: fadein .45s var(--ease); }
 @keyframes fadein { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* Type-led hero: "St. Cyr Event Co. handles your [event]" */
+.hero-type { padding: 56px var(--gutter) 96px; text-align: center; }
+.hero-type > div { max-width: 1000px; margin: 0 auto; }
+.hero-line { font-family: var(--font-display); font-weight: 400; font-size: clamp(56px, 8vw, 120px); line-height: 1.02; margin: 0 0 28px; }
+.swap { display: inline-block; vertical-align: bottom; height: 1.08em; overflow: hidden; }
+.word { display: inline-block; padding: 0 .22em; border-radius: .2em; line-height: 1.08; transition: transform .5s var(--ease), opacity .5s; }
+.word.out { transform: translateY(-100%); opacity: 0; }
+.word.pre { transform: translateY(100%); opacity: 0; transition: none; }
+.hero-type .lg { max-width: 520px; margin: 0 auto; color: var(--ink); }
+.hero-type .ctas { display: flex; gap: 10px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+.hero-type .btn.light { border: 1px solid var(--line); }

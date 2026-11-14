@@ -14,7 +14,8 @@ How to update your website. No coding needed: everything is done by uploading fi
 | Add a testimonial | `src/data/testimonials.yaml` | Copy a block and change it |
 | Add a client logo | `src/assets/images/logos/` + `src/data/clients.yaml` | Upload the logo, add one entry |
 | Swap the headshot | `src/assets/images/headshot.jpg` | Upload a new file with the same name |
-| Swap the homepage photos | `src/assets/images/home/` | Replace `hero.jpg` or `feature.jpg` |
+| Change the rotating event words | `src/data/site.yaml` → `hero.rotating_words` | Add or remove a line |
+| Swap the homepage photo | `src/assets/images/home/` | Replace `feature.jpg` |
 | Swap the site logo | `public/images/logo.png` | Upload a new file with the same name |
 
 ---
@@ -85,7 +86,7 @@ Fonts are set in the same file. They're all free Google Fonts (Anton, Geist, Gei
 
 All text lives in **`src/data/`**:
 
-- **`site.yaml`**: homepage (hero, logo wall heading, About, process steps), the closing "Have an event coming up?" block, footer, contact page and checklist, and the main button label.
+- **`site.yaml`**: homepage (hero headline and rotating event words, logo wall heading, About, process steps), the closing "Have an event coming up?" block, footer, contact page and checklist, and the main button label.
 - **`services.yaml`**: the four services: client quote, description, bullet points, colour and the involvement meter (`level` 1–4).
 - **`faq.yaml`**: questions and answers on the Services page.
 - **`work.yaml`**: Work page heading, intro and the three stats.

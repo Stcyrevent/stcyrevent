@@ -25,9 +25,19 @@ nav:
     href: /#about
 
 # ---------- HOMEPAGE ----------
-# Hero photo: src/assets/images/home/hero.jpg (replace the file, keep the name)
+# Hero: "St. Cyr Event Co. / handles your / [event]" — the last word rotates.
 hero:
   headline: St. Cyr Event Co.
+  lead_in: handles your
+  rotating_words:
+    - offsite
+    - town hall
+    - product launch
+    - AGM
+    - client dinner
+    - trade show
+    - community event
+    - awareness event
   tagline: Event coordination, project management and marketing support for lean teams that need extra capacity.
   secondary_button: See work
 

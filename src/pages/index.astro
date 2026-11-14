@@ -3,13 +3,13 @@ import Layout from '../layouts/Layout.astro';
 import QuoteWall from '../components/QuoteWall.astro';
 import { Image } from 'astro:assets';
 import { site, services, logoWall } from '../lib/content';
-import hero from '../assets/images/home/hero.jpg';
 import feature from '../assets/images/home/feature.jpg';
 import headshot from '../assets/images/headshot.jpg';
 
 const s = site();
 const svc = services().services;
 const logos = logoWall();
+const words: string[] = s.hero.rotating_words ?? [];
 
 // Simple line icons for each service, by service code
 const icons: Record<string, string> = {
@@ -22,17 +22,40 @@ const icons: Record<string, string> = {
 
 <Layout title="Home">
   <!-- Hero -->
-  <section class="hero">
-    <Image src={hero} alt="" widths={[800, 1400, 2000]} sizes="100vw" loading="eager" />
-    <h1 class="d1 rv">{s.hero.headline}</h1>
-    <div class="row rv">
-      <p>{s.hero.tagline}</p>
+  <section class="hero-type">
+    <div class="rv">
+      <h1 class="hero-line">
+        <span>{s.hero.headline}</span><br />{s.hero.lead_in}<br />
+        <span class="swap"><span class="word bg-yellow">{words[0]}</span></span>
+      </h1>
+      <p class="lg">{s.hero.tagline}</p>
       <div class="ctas">
-        <a class="btn light" href="/get-in-touch">{s.cta_label}</a>
-        <a class="btn ghost" href="/past-work">{s.hero.secondary_button}</a>
+        <a class="btn" href="/get-in-touch">{s.cta_label}</a>
+        <a class="btn light" href="/past-work">{s.hero.secondary_button}</a>
       </div>
     </div>
   </section>
+  <script define:vars={{ words }}>
+    // Rotates the event type in the hero headline, cycling through the palette.
+    const colors = ['bg-yellow', 'bg-pink', 'bg-lime', 'bg-sky'];
+    const box = document.querySelector('.hero-type .swap');
+    if (box && words.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let i = 0;
+      setInterval(() => {
+        i = (i + 1) % words.length;
+        const cur = box.querySelector('.word');
+        const next = document.createElement('span');
+        next.className = 'word pre ' + colors[i % colors.length];
+        next.textContent = words[i];
+        cur.classList.add('out');
+        setTimeout(() => {
+          cur.remove();
+          box.appendChild(next);
+          requestAnimationFrame(() => requestAnimationFrame(() => next.classList.remove('pre')));
+        }, 450);
+      }, 2200);
+    }
+  </script>
 
   <!-- Logo wall -->
   <section class="section">
