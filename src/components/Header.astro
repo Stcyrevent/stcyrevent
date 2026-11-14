@@ -29,4 +29,9 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
     btn.setAttribute('aria-expanded', String(!!open));
   });
   menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.classList.remove('open')));
+  // Fade content out under the nav once the page is scrolled
+  const nav = document.querySelector('.nav');
+  const onScroll = () => nav?.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 </script>

@@ -278,3 +278,12 @@ footer.site .copy { border-top: 1px solid #3a3a3a; margin-top: 40px; padding-top
 /* Logo sits outside the nav pill */
 .nav .bar { padding: 12px 26px; }
 @media (max-width: 860px) { .nav .bar { display: none; } }
+
+/* Nav: content fades and blurs out beneath it once you scroll */
+.nav { isolation: isolate; }
+.nav::before { content: ""; position: absolute; inset: 0 0 -28px 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(var(--paper) 55%, color-mix(in srgb, var(--paper) 0%, transparent));
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  -webkit-mask-image: linear-gradient(#000 60%, transparent); mask-image: linear-gradient(#000 60%, transparent);
+  opacity: 0; transition: opacity .35s ease; }
+.nav.scrolled::before { opacity: 1; }
