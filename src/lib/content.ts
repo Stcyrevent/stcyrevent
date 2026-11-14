@@ -20,7 +20,7 @@ export const boldify = (s: string = '') =>
     .replace(/\*\*\s*(.+?)\s*\*\*/g, '<b>$1</b>');
 
 export const SERVICE_NAMES: Record<string, string> = {
-  FS: 'Full Service',
+  FS: 'Full Service Coordination',
   PE: 'Pre-Event Coordination',
   OS: 'On-Site',
   VC: 'Virtual',
