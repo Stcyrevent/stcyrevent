@@ -52,7 +52,7 @@ img { max-width: 100%; }
 /* ---------- nav ---------- */
 .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px var(--gutter); position: sticky; top: 0; z-index: 30; }
 .nav .bar { display: flex; align-items: center; gap: 30px; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-radius: 999px; padding: 8px 26px 8px 18px; }
-.nav .logo img { height: 40px; width: auto; display: block; }
+.nav .logo img { height: 48px; width: auto; display: block; }
 .nav .bar a:not(.logo) { font-weight: 500; font-size: 15px; text-decoration: none; color: #555; }
 .nav .bar a:not(.logo):hover, .nav .bar a[aria-current] { color: var(--ink); }
 .menu-btn { display: none; background: #fff; border: 0; border-radius: 999px; width: 48px; height: 48px; cursor: pointer; }
