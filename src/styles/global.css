@@ -269,3 +269,9 @@ footer.site .copy { border-top: 1px solid #3a3a3a; margin-top: 40px; padding-top
 .hero-type .lg { max-width: 520px; margin: 0 auto; color: var(--ink); }
 .hero-type .ctas { display: flex; gap: 10px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
 .hero-type .btn.light { border: 1px solid var(--line); }
+
+/* Hero colour card: background drifts through the palette with the rotating word */
+.hero-type { margin: 0 var(--edge); border-radius: var(--r-lg); padding-top: 88px; padding-bottom: 112px;
+  background-color: color-mix(in srgb, var(--c) 70%, #fff); transition: background-color 1.4s cubic-bezier(.4,0,.2,1); }
+.hero-type .word { background: var(--ink); color: color-mix(in srgb, var(--c) 85%, #fff); transition: transform .5s var(--ease), opacity .5s, color 1.4s; }
+.hero-type .btn.light { border-color: transparent; }

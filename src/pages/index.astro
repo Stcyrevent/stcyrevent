@@ -22,11 +22,11 @@ const icons: Record<string, string> = {
 
 <Layout title="Home">
   <!-- Hero -->
-  <section class="hero-type">
+  <section class="hero-type" style="--c: var(--yellow)">
     <div class="rv">
       <h1 class="hero-line">
         <span>{s.hero.headline}</span><br />{s.hero.lead_in}<br />
-        <span class="swap"><span class="word bg-yellow">{words[0]}</span></span>
+        <span class="swap"><span class="word">{words[0]}</span></span>
       </h1>
       <p class="lg">{s.hero.tagline}</p>
       <div class="ctas">
@@ -36,16 +36,19 @@ const icons: Record<string, string> = {
     </div>
   </section>
   <script define:vars={{ words }}>
-    // Rotates the event type in the hero headline, cycling through the palette.
-    const colors = ['bg-yellow', 'bg-pink', 'bg-lime', 'bg-sky'];
+    // Rotates the event type in the hero headline. The background colour
+    // drifts through the palette in step (colours come from theme.css).
+    const colors = ['var(--yellow)', 'var(--pink)', 'var(--lime)', 'var(--sky)'];
+    const hero = document.querySelector('.hero-type');
     const box = document.querySelector('.hero-type .swap');
-    if (box && words.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (hero && box && words.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
       let i = 0;
       setInterval(() => {
         i = (i + 1) % words.length;
+        hero.style.setProperty('--c', colors[i % colors.length]);
         const cur = box.querySelector('.word');
         const next = document.createElement('span');
-        next.className = 'word pre ' + colors[i % colors.length];
+        next.className = 'word pre';
         next.textContent = words[i];
         cur.classList.add('out');
         setTimeout(() => {
