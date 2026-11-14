@@ -23,7 +23,7 @@ export const SERVICE_NAMES: Record<string, string> = {
   FS: 'Full Service Coordination',
   PE: 'Pre-Event Coordination',
   OS: 'On-Site',
-  VC: 'Virtual',
+  VC: 'Virtual Consultation',
 };
 
 // ---------- Logos ----------
