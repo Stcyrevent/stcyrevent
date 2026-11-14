@@ -21,7 +21,7 @@ export const boldify = (s: string = '') =>
 
 export const SERVICE_NAMES: Record<string, string> = {
   FS: 'Full Service',
-  PE: 'Pre-Event',
+  PE: 'Pre-Event Coordination',
   OS: 'On-Site',
   VC: 'Virtual',
 };
