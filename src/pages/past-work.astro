@@ -38,10 +38,10 @@ const large = await Promise.all(photos.map((p) => getImage({ src: p.src, width: 
         <span class="count mono" id="count">01 / {pad(photos.length)}</span>
         <button class="nav-btn prev" data-step="-1" aria-label="Previous photo">←</button>
         <button class="nav-btn next" data-step="1" aria-label="Next photo">→</button>
-      </div>
       <div class="capbar">
         <p class="h3" id="capT">{photos[0]?.title}</p>
         <div class="meta"><span class="mono" id="capA">{photos[0]?.client}</span><span class="mono" id="capB">{photos[0]?.serviceName}</span></div>
+      </div>
       </div>
       <div class="strip" id="strip">
         {photos.map((p, i) => (
