@@ -126,7 +126,7 @@ Keep excerpts to one or two sentences. Card colours rotate automatically.
     logo: acme.png
 ```
 
-Logos are shown in grey and sized automatically so they look balanced. The homepage shows them in the order of this list. `code` is also what you use at the start of photo names.
+Logos are sized automatically so they look balanced. The homepage shows them in the order of this list. `code` is also what you use at the start of photo names.
 
 ---
 

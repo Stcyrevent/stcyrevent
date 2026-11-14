@@ -80,8 +80,7 @@ img { max-width: 100%; }
 /* ---------- logo wall ---------- */
 .logos { display: grid; grid-template-columns: repeat(4, 1fr) 1.3fr; grid-template-rows: repeat(3, 120px); gap: 4px; }
 .logos .t { background: #fff; border-radius: var(--r); display: flex; align-items: center; justify-content: center; padding: 12px; }
-.logos .t img { filter: grayscale(1) contrast(1.1); opacity: .72; transition: filter .3s, opacity .3s; object-fit: contain; }
-.logos .t:hover img { filter: none; opacity: 1; }
+.logos .t img { object-fit: contain; }
 .logos .feat { grid-row: 1 / 4; grid-column: 5; border-radius: var(--r); color: #fff; padding: 24px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; }
 .logos .feat img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .logos .feat::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.6)); }
@@ -170,7 +169,7 @@ footer.site .copy { border-top: 1px solid #3a3a3a; margin-top: 40px; padding-top
 .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .track { display: flex; gap: 12px; width: max-content; animation: slide 40s linear infinite; }
 .marquee:hover .track { animation-play-state: paused; }
-.tile { font-family: var(--font-display); font-size: clamp(32px, 4vw, 56px); padding: 18px 34px; border-radius: 999px; white-space: nowrap; color: var(--ink); }
+.tile { font-family: var(--font-body); font-weight: 600; font-size: 20px; letter-spacing: -.02em; padding: 14px 26px; border-radius: 999px; white-space: nowrap; color: var(--ink); }
 @keyframes slide { to { transform: translateX(-50%); } }
 .faq details { border-top: 1px solid var(--line); padding: 22px 0; }
 .faq details:last-child { border-bottom: 1px solid var(--line); }
@@ -261,7 +260,7 @@ footer.site .copy { border-top: 1px solid #3a3a3a; margin-top: 40px; padding-top
 /* Type-led hero: "St. Cyr Event Co. handles your [event]" */
 .hero-type { padding: 56px var(--gutter) 96px; text-align: center; }
 .hero-type > div { max-width: 1000px; margin: 0 auto; }
-.hero-line { font-family: var(--font-display); font-weight: 400; font-size: clamp(56px, 8vw, 120px); line-height: 1.02; margin: 0 0 28px; }
+.hero-line { font-family: var(--font-display); font-weight: 400; font-size: clamp(44px, 5.4vw, 72px); line-height: 1.02; margin: 0 0 28px; }
 .swap { display: inline-block; vertical-align: bottom; height: 1.08em; overflow: hidden; }
 .word { display: inline-block; padding: 0 .22em; border-radius: .2em; line-height: 1.08; transition: transform .5s var(--ease), opacity .5s; }
 .word.out { transform: translateY(-100%); opacity: 0; }
