@@ -15,7 +15,7 @@
   /* Accent colours (used for whole sections, tiles and tags — never for text) */
   --yellow: #FFFA64;   /* "How we'll work together", Full Service */
   --lime: #D1F48C;     /* Closing call-to-action, Pre-Event Support */
-  --pink: #FFB8FC;     /* On-Site */
+  --pink: #FE7E5E;     /* On-Site */
   --sky: #E7F1FF;      /* Virtual Consultation */
 
   /* Fonts (loaded from Google Fonts in src/layouts/Layout.astro) */
