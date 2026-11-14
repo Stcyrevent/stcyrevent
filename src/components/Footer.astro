@@ -1,32 +1,30 @@
 ---
-import { readFileSync } from 'fs';
-import { parse } from 'yaml';
-
-const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
+import { site } from '../lib/content';
+const siteData = site();
 ---
 
-<footer class="bg-footer-bg border-t-2 border-green/30">
-  <div class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-    <div>
-      <h3 class="font-semibold text-teal mb-3">Contact</h3>
-      <a href={`mailto:${siteData.email}`} class="block text-teal/80 hover:text-salmon transition-colors">
-        {siteData.email}
-      </a>
-      {siteData.socials.map((social: { platform: string; url: string }) => (
-        <a href={social.url} target="_blank" rel="noopener" class="block text-teal/80 hover:text-salmon transition-colors mt-1">
-          {social.platform}
-        </a>
-      ))}
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <p class="brand">{siteData.name}</p>
+        <p>{siteData.footer_tagline}<br />{siteData.location}</p>
+      </div>
+      <div>
+        <p class="h3">Pages</p>
+        <ul>
+          {siteData.nav.map((item: { label: string; href: string }) => <li><a href={item.href}>{item.label}</a></li>)}
+          <li><a href="/get-in-touch">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="h3">Contact</p>
+        <ul>
+          <li><a href={`mailto:${siteData.email}`}>{siteData.email}</a></li>
+          {siteData.socials.map((s: { platform: string; url: string }) => <li><a href={s.url} target="_blank" rel="noopener">{s.platform}</a></li>)}
+        </ul>
+      </div>
     </div>
-
-    <div>
-      <h3 class="font-semibold text-teal mb-3">Location</h3>
-      <p class="text-teal/80">{siteData.location}</p>
-    </div>
-
-    <div>
-      <h3 class="font-semibold text-teal mb-3">{siteData.name}</h3>
-      <p class="text-teal/80">&copy; {new Date().getFullYear()} {siteData.name}. All rights reserved.</p>
-    </div>
+    <p class="copy">&copy; {new Date().getFullYear()} {siteData.name}</p>
   </div>
 </footer>

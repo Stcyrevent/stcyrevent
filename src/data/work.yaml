@@ -1,154 +1,31 @@
 # ============================================
-# PAST WORK / PORTFOLIO
-# Edit this file to add or update projects
-# Add images to public/images/work/
+# WORK PAGE
+#
+# PHOTOS: you don't list photos here anymore. Just upload them to
+#   src/assets/images/work/
+# and name each file like this:
+#
+#   CLIENTCODE_Event Title_SERVICE_number.jpg
+#   e.g.  PBP_Client Appreciation_FS_8.jpg
+#
+#   CLIENTCODE  from src/data/clients.yaml (PBP, SHOPIFY, EFRY …)
+#   Event Title shown as the caption
+#   SERVICE     FS = Full Service, PE = Pre-Event, OS = On-Site, VC = Virtual
+#   number      any number, just to keep file names unique
+#
+# The photo then appears in the gallery with the right caption and filters.
 # ============================================
 
-intro: Over my career, I have planned and executed over 95 events, including town halls, multi-day off-sites, product launches, AGMs, and client appreciation dinners. I've also negotiated over 45 vendor contracts and secured more than 15 sponsorships for cost-effective and high-value execution.
-heading: Projects Over the Years
-subtitle: My past work reflects a focus on events that inform audiences, engage prospects, and celebrate key moments.
+heading: Projects over the years
+intro: My past work reflects a focus on events that inform audiences, engage prospects, and celebrate key moments.
 
-projects:
-  - image: /images/work/PBP_Client Appreciation-1.jpg
-    caption: Client Appreciation Event
-    category: Full Service Event Coordination
-
-  - image: /images/work/PBP_Client Appreciation Event_Pasta.PNG
-    caption: Client Appreciation Event
-    category: Full Service Event Coordination
-   
-  - image: /images/work/EFry Toronto_AGM-FS 1.jpeg
-    caption: Annual General Meeting/Panel Discussion
-    category: Full Service Event Coordination
-
-  - image: /images/work/BCSS_Panel 1_FS.jpeg
-    caption: Awareness Event
-    category: Full Service Event Coordination   
-    
-  - image: /images/work/Shopify_Offsite-7.jpg
-    caption: Offsite
-    category: Full Service Event Coordination
-
-  - image: /images/work/PBP_Client Appreciation-2.jpg
-    caption: Client Appreciation Event
-    category: Full Service Event Coordination
-
-  - image: /images/work/Tempo_Community Event 8.jpg
-    caption: Community Event
-    category: Pre-Event Support Coordination  
-
-  - image: /images/work/PBP_Booth Activation-2.jpg
-    caption: Trade Show Booth Activation
-    category: Full Service Event Coordination    
-
-  - image: /images/work/EFry Toronto_AGM_Virtual 5.JPG
-    caption: Annual General Meeting/Panel Discussion 
-    category: Virtual Consultation
-
-  - image: /images/work/PBP_Client Appreciation-NS.PNG
-    caption: Client Appreciaition Event
-    category: Full Service Event Coordination  
-    
-  - image: /images/work/Shopify_Offsite-5.jpg
-    caption: Offsite
-    category: Full Service Event Coordination
-    
-  - image: /images/work/Tempo_Community Event 1_PE.jpeg
-    caption: Community Event
-    category: Pre-Event Support Coordination  
-
-  - image: /images/work/EFry Toronto_Community Event 3.jpg
-    caption: Awareness Event
-    category: Pre-Event Support Coordination  
-
-  - image: /images/work/PBP_Client Appreciation-3.jpg
-    caption: Client Appreciation Event
-    category: Full Service Event Coordination
-
-  - image: /images/work/EFry Toronto_AGM_FS.HEIC
-    caption: Annual General Meeting/Panel Discussion
-    category: Full Service Event Coordination
-  
-  - image: /images/work/PBP_Client Appreciation-4.jpg
-    caption: Client Appreciation Event
-    category: Full Service Event Coordination
-
-  - image: /images/work/PBP_Client Appreciation-8.jpg
-    caption: Client Appreciation Event
-    category: Full Service Event Coordination
-
-  - image: /images/work/Shopify_Offsite-6.jpg
-    caption: Offsite
-    category: Full Service Event Coordination 
-
-  - image: /images/work/Small At Home Wedding_2-COVID.jpg
-    caption: Private Dinner
-    category: Full Service Event Coordination   
-
-  - image: /images/work/Shopify_Team Building.jpg
-    caption: Offsite
-    category: Full Service Event Coordination   
-
-  - image: /images/work/LBMG_PNE 4.JPG
-    caption: Community Event
-    category: On-Site Management 
-
-  - image: /images/work/Shopify_Offsite-2.jpg
-    caption: Offsite
-    category: Full Service Event Coordination
-
-  - image: /images/work/Tempo_Commmunity Event_Night.JPEG
-    caption: Community Event
-    category: Pre-Event Support Coordination
-
-  - image: /images/work/PBP_Client Appreciation Event_Pasta.PNG
-    caption: Client Appreciation Event
-    category: Full Service Event Coordination
-
-  - image: /images/work/Shopify_Offsite-3.jpg
-    caption: Offsite
-    category: Full Service Event Coordination  
-
-  - image: /images/work/Shopify_Offsite-4.jpg
-    caption: Offsite
-    category: Full Service Event Coordination  
-
-  - image: /images/work/PBP_Trade Show Booth-FS 1.jpg
-    caption: Trade Show Booth
-    category: Full Service Event Coordination
-
-  - image: /images/work/Shopify_Offsite-7.jpg
-    caption: Offsite
-    category: Full Service Event Coordination
-
-  - image: /images/work/Tempo_Community Event 2_PE.jpeg
-    caption: Community Event
-    category: Pre-Event Support Coordination
-
-  - image: /images/work/BCSS_Team Pic_FS.jpeg
-    caption: Awareness Event
-    category: Full Service Event Coordination 
-
-  - image: /images/work/EFry Toronto_AGM_Virtual.png
-    caption: Annual General Meeting/Panel Discussion
-    category: Virtual Consultation
-
-  - image: /images/work/EFryToronto_AGM_Virtual-3.png
-    caption: Annual General Meeting/Panel Discussion
-    category: Virtual Consultation
-
-  - image: /images/work/LBMG_PNE-2.jpg
-    caption: Community Event
-    category: On-Site Management 
-
-  - image: /images/work/PBP_Booth Activation-4.jpg
-    caption: Trade Show Booth Activation
-    category: Full Service Event Coordination
-
-  - image: /images/work/PBP_Booth_FS.jpg
-    caption: Trade Show Booth
-    category: Full Service Event Coordination
-
-  - image: /images/work/img_8571_original.jpg
-    caption: Event Coordination
-    category: Full Service Event Coordination
+stats:
+  - number: 95
+    label: Events delivered
+    color: yellow
+  - number: 45
+    label: Vendor contracts
+    color: pink
+  - number: 15
+    label: Sponsorships secured
+    color: lime

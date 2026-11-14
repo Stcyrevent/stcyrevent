@@ -1,130 +1,91 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import { readFileSync } from 'fs';
-import { parse } from 'yaml';
+import { site, services } from '../lib/content';
 
-const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
-
-const contactHero = (await import('../assets/images/contact-hero.jpg')).default;
+const s = site();
+const c = s.contact;
+const svc = services().services;
+const checkColors = ['bg-yellow', 'bg-lime', 'bg-pink', 'bg-sky'];
+const eventTypes = ['Offsite', 'Conference', 'Launch', 'Fundraiser or gala', 'Trade show', 'Community event', 'Other'];
 ---
 
-<Layout title="Get In Touch" description="Contact St. Cyr Event Co. for freelance event coordination, project management, and marketing support.">
-  <section class="py-16 md:py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-        <!-- Left: Text + Form -->
-        <div class="reveal">
-          <h1 class="text-4xl md:text-5xl font-light text-teal mb-6">Contact</h1>
-          <p class="text-lg leading-relaxed text-teal/80 mb-4">
-            My freelance support offers more than an extra set of hands. It brings a fresh perspective, relevant experience, and a steady presence that helps events run smoothly.
-          </p>
-          <p class="text-lg leading-relaxed text-teal/80 mb-10">
-            If you're looking for event support that's thoughtful, reliable, and genuinely collaborative, let's connect.
-          </p>
-
-          <form
-            id="contact-form"
-            action="https://formspree.io/f/mlgpynvq"
-            method="POST"
-            class="space-y-5"
-          >
-
-            <div>
-              <label for="name" class="block text-sm font-medium text-teal mb-1">Name *</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                class="w-full px-4 py-3 border border-green/40 rounded-sm bg-white text-teal focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
-              />
-            </div>
-
-            <div>
-              <label for="email" class="block text-sm font-medium text-teal mb-1">Email *</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                class="w-full px-4 py-3 border border-green/40 rounded-sm bg-white text-teal focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
-              />
-            </div>
-
-            <div>
-              <label for="message" class="block text-sm font-medium text-teal mb-1">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                class="w-full px-4 py-3 border border-green/40 rounded-sm bg-white text-teal focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors resize-y"
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              id="submit-btn"
-              class="px-10 py-4 bg-btn-primary-bg text-white rounded-sm font-semibold text-lg hover:bg-btn-primary-hover transition-colors shadow-md"
-            >
-              Send Message
-            </button>
-          </form>
-
-          <!-- Success Message -->
-          <div id="form-success" class="hidden py-8 text-center">
-            <p class="text-2xl font-light text-teal mb-2">Thank you!</p>
-            <p class="text-lg text-teal/80">Your message has been sent. I'll be in touch soon.</p>
-          </div>
-
-          <!-- Error Message -->
-          <div id="form-error" class="hidden py-4 px-5 bg-red-50 border border-red-200 rounded-sm">
-            <p class="text-red-700">Something went wrong. Please try again or email directly at <a href="mailto:stcyr.event.co@gmail.com" class="underline">stcyr.event.co@gmail.com</a>.</p>
-          </div>
-        </div>
-
-        <!-- Right: Image -->
-        <div class="hidden md:block reveal">
-          <Image
-            src={contactHero}
-            alt="Kendra St. Cyr coordinating an event"
-            class="w-full h-auto rounded object-cover aspect-[9/16] max-h-[700px]"
-            width={600}
-          />
-        </div>
-      </div>
+<Layout title="Get in touch" description="Tell St. Cyr Event Co. about your event." closing={false}>
+  <div class="wrap contact">
+    <div class="rv">
+      <h1 class="d1">{c.heading}</h1>
+      <p class="lg">{c.intro}</p>
+      <ul class="checks" data-stagger>
+        {c.checklist.map((item: string, i: number) => (
+          <li>
+            <span class={`ck ${checkColors[i % checkColors.length]}`}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10" /></svg>
+            </span>
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
-  </section>
-<script>
-  const form = document.getElementById('contact-form') as HTMLFormElement;
-  const successMsg = document.getElementById('form-success')!;
-  const errorMsg = document.getElementById('form-error')!;
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    errorMsg.classList.add('hidden');
+    <form class="form rv" id="contact-form" action={c.formspree_url} method="POST">
+      <div><label for="f-name">Name</label><input id="f-name" name="name" required autocomplete="name" /></div>
+      <div><label for="f-email">Email</label><input id="f-email" type="email" name="email" required autocomplete="email" /></div>
+      <div class="full"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="A few lines about your event"></textarea></div>
 
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
-      });
+      <details class="full more">
+        <summary>Add event details <i>optional</i></summary>
+        <div class="more-grid">
+          <div>
+            <label for="f-type">Event type</label>
+            <select id="f-type" name="event_type">
+              <option value="">Select</option>
+              {eventTypes.map((t) => <option>{t}</option>)}
+            </select>
+          </div>
+          <div><label for="f-date">Event date</label><input id="f-date" type="date" name="event_date" /></div>
+          <div class="full">
+            <label>Support needed</label>
+            <div class="chips">
+              {svc.map((x: any) => (
+                <>
+                  <input type="checkbox" id={`f-s-${x.code}`} name="support" value={x.title} />
+                  <label for={`f-s-${x.code}`}>{x.title}</label>
+                </>
+              ))}
+              <input type="checkbox" id="f-s-unsure" name="support" value="Not sure yet" />
+              <label for="f-s-unsure">Not sure</label>
+            </div>
+          </div>
+          <div class="full"><label for="f-more">Anything else I should know?</label><textarea id="f-more" name="details" placeholder="Guest count, budget, venue, goals…"></textarea></div>
+        </div>
+      </details>
 
-      if (res.ok) {
-        form.classList.add('hidden');
-        successMsg.classList.remove('hidden');
-      } else {
-        throw new Error();
+      <div class="full"><button class="btn" type="submit" id="submit-btn">Send</button></div>
+      <p class="msg bg-lime" id="form-success" hidden>{c.success}</p>
+      <p class="msg bg-pink" id="form-error" hidden>Something went wrong. Please try again or email {s.email}.</p>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const ok = document.getElementById('form-success')!;
+    const err = document.getElementById('form-error')!;
+    const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      err.hidden = true;
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error();
+        form.querySelectorAll('div, details').forEach((el) => ((el as HTMLElement).hidden = true));
+        ok.hidden = false;
+      } catch {
+        err.hidden = false;
+        btn.disabled = false;
+        btn.textContent = 'Send';
       }
-    } catch {
-      errorMsg.classList.remove('hidden');
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
-    }
-  });
-</script>
+    });
+  </script>
 </Layout>

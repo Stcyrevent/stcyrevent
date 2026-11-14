@@ -1,0 +1,25 @@
+/* ============================================
+   THEME — colours and fonts for the whole site
+   Change a hex code here and it updates everywhere.
+   Keep the names (left side) the same; only change the values.
+   ============================================ */
+
+:root {
+  /* Base */
+  --ink: #212121;      /* Text, buttons, icons */
+  --paper: #F6F4F0;    /* Page background (warm off-white) */
+  --white: #FFFFFF;    /* Cards and surfaces that sit on the page */
+  --muted: #6A6A6A;    /* Secondary text */
+  --line: #E2DED7;     /* Thin divider lines */
+
+  /* Accent colours (used for whole sections, tiles and tags — never for text) */
+  --yellow: #FFFA64;   /* "How we'll work together", Full Service */
+  --lime: #D1F48C;     /* Closing call-to-action, Pre-Event Support */
+  --pink: #FFB8FC;     /* On-Site */
+  --sky: #E7F1FF;      /* Virtual Consultation */
+
+  /* Fonts (loaded from Google Fonts in src/layouts/Layout.astro) */
+  --font-display: 'Anton', Impact, sans-serif;            /* Big headlines + numbers only */
+  --font-body: 'Geist', system-ui, sans-serif;            /* Everything else */
+  --font-mono: 'Geist Mono', ui-monospace, monospace;     /* Small labels */
+}

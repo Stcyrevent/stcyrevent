@@ -1,40 +1,24 @@
 /** @type {import('tailwindcss').Config} */
+// Colours and fonts are defined once in src/styles/theme.css.
+// This file just points Tailwind at those same values — no need to edit it.
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       colors: {
-        // -- Base palette --
-        salmon: '#fd8a6b',
-        green: '#8bbd6f',
-        cream: '#fcf9ea',
-        teal: '#2b4244',
-
-        // -- Backgrounds: page-level --
-        'hero-bg': '#fcf9ea',           // Homepage hero section
-        'banner-bg': '#2b4244',           // Services & Work page hero banners
-        // Decorative sidebars (split)
-        'sidebar-left-bg': '#fff799',       // Decorative left sidebars (Layout)
-        'sidebar-right-bg': '#ffffff',       // Decorative right sidebars (Layout)
-        'footer-bg': '#fcf9ea',         // Footer background
-
-        // -- Backgrounds: section-level --
-        'section-alt-bg': '#8bbd6f1a',    // Alternating sections: services preview (home), CTA (work page)
-        'cta-bg': '#ffad841a',            // CTA sections on homepage & services page
-        'blockquote-bg': '#ffad840d',     // Services page add-on blockquote
-
-        // -- Backgrounds: components --
-        'accordion-bg': '#8bbd6f1a',      // Services page accordion button
-        'accordion-hover-bg': '#8bbd6f33', // Services page accordion button hover
-        'filter-btn-bg': '#2b42441a',     // Work page inactive filter button
-        'filter-btn-active-bg': '#ffad84', // Work page active filter button
-
-        // -- Primary action buttons (Get In Touch, Send Message, Back to Home) --
-        'btn-primary-bg': '#ffad84',      // Button background
-        'btn-primary-hover': '#ffad84d9', // Button hover state
+        ink: 'var(--ink)',
+        paper: 'var(--paper)',
+        muted: 'var(--muted)',
+        line: 'var(--line)',
+        yellow: 'var(--yellow)',
+        lime: 'var(--lime)',
+        pink: 'var(--pink)',
+        sky: 'var(--sky)',
       },
       fontFamily: {
-        sans: ['Albert Sans', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-body)'],
+        display: ['var(--font-display)'],
+        mono: ['var(--font-mono)'],
       },
     },
   },

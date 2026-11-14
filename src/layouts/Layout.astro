@@ -1,19 +1,20 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { readFileSync } from 'fs';
-import { parse } from 'yaml';
+import Closing from '../components/Closing.astro';
+import { site } from '../lib/content';
+import '../styles/global.css';
 
 interface Props {
   title: string;
   description?: string;
   image?: string;
+  closing?: boolean;
 }
 
-const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
-
-const { title, description, image } = Astro.props;
-const metaDescription = description || 'St. Cyr Event Co. — Freelance event coordination, project management, and marketing support in Vancouver, BC.';
+const siteData = site();
+const { title, description, image, closing = true } = Astro.props;
+const metaDescription = description || 'St. Cyr Event Co. — Event coordination, project management and marketing support. Vancouver, BC, working across Canada.';
 const ogImage = image || '/og-default.jpg';
 const pageTitle = `${title} | ${siteData.name}`;
 const canonicalUrl = Astro.url.href;
@@ -26,15 +27,12 @@ const canonicalUrl = Astro.url.href;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={metaDescription} />
 
-    <!-- Open Graph -->
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={metaDescription} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteData.name} />
-
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={metaDescription} />
@@ -43,58 +41,40 @@ const canonicalUrl = Astro.url.href;
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <title>{pageTitle}</title>
   </head>
-  <body class="font-sans text-teal bg-white">
-    <div class="flex min-h-screen">
-      <!-- Left yellow sidebar -->
-      <div class="hidden lg:block w-20 bg-sidebar-left-bg flex-shrink-0 fixed top-0 left-0 h-full z-30 pointer-events-none"></div>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    {closing && <Closing />}
+    <Footer />
 
-      <!-- Main content centered -->
-      <div class="flex-1 lg:mx-20">
-        <Header />
-        <main>
-          <slot />
-        </main>
-        <Footer />
-      </div>
-
-      <!-- Right sidebar -->
-      <div class="hidden lg:block w-20 bg-sidebar-right-bg flex-shrink-0 fixed top-0 right-0 h-full z-30 pointer-events-none"></div>
-    </div>
+    <script>
+      // Reveal-on-scroll: elements with .rv or [data-stagger] fade up when they enter the screen.
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (!e.isIntersecting) return;
+            e.target.classList.add('in');
+            e.target.querySelectorAll<HTMLElement>('[data-count]').forEach((c) => {
+              const to = Number(c.dataset.count);
+              const t0 = performance.now();
+              const tick = (t: number) => {
+                const p = Math.min(1, (t - t0) / 1200);
+                c.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))) + '+';
+                if (p < 1) requestAnimationFrame(tick);
+              };
+              requestAnimationFrame(tick);
+            });
+            io.unobserve(e.target);
+          });
+        },
+        { threshold: 0.15 }
+      );
+      document.querySelectorAll('.rv, [data-stagger]').forEach((el) => io.observe(el));
+    </script>
   </body>
 </html>
-
-<style is:global>
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Scroll reveal animations */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
-
-<script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-
-  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-</script>

@@ -1,0 +1,12 @@
+---
+import { site } from '../lib/content';
+const siteData = site();
+---
+
+<section class="section closing bg-lime">
+  <div class="wrap rv">
+    <h2 class="d1">{siteData.closing.heading}</h2>
+    <p class="lg">{siteData.closing.text}</p>
+    <a class="btn lg" href="/get-in-touch">{siteData.cta_label}</a>
+  </div>
+</section>

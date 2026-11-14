@@ -1,195 +1,138 @@
 # St. Cyr Event Co. — Website
 
-This guide explains how to update text, images, and logos on the website. All changes are made by editing files directly on GitHub — no coding required.
+How to update your website. No coding needed: everything is done by uploading files or editing text on GitHub. After each change the site rebuilds automatically (about 1–2 minutes).
 
----
+**Quick reference**
 
-## How to Edit Files on GitHub
-
-1. Go to the project on GitHub
-2. Navigate to the file you want to edit
-3. Click the **pencil icon** (Edit this file) in the top-right corner
-4. Make your changes
-5. Click **"Commit changes"**, add a short description of what you changed, and confirm
-
----
-
-## Updating Text Content
-
-All of the website text lives in simple data files inside the **`src/data/`** folder. Open any of these files and edit the text between the quotes.
-
-### `src/data/site.yaml` — General Site Info
-
-This controls the homepage hero section, about section, and site-wide details.
-
-| Field | What it controls |
-|---|---|
-| `name` | Business name shown in the footer |
-| `email` | Contact email |
-| `location` | Location shown in the footer |
-| `hero.headline` | Large text on the homepage hero |
-| `hero.tagline` | Smaller text below the hero headline |
-| `about.intro` | First paragraph in the About section |
-| `about.story` | Italic paragraph in the About section |
-| `about.experience` | Third paragraph in the About section |
-| `organizations.heading` | Heading above the client logos |
-| `organizations.description` | Description below that heading |
-| `socials` | Social media links (update the `url` value) |
-
-### `src/data/services.yaml` — Services Page
-
-| Field | What it controls |
-|---|---|
-| `intro` | Text in the hero banner at the top |
-| `subtitle` | Text below the hero on the services list |
-| `addons` | The quote block at the bottom about add-on services |
-| `services` | Each service has a `title`, `description`, and `items` (bullet points) |
-
-**To edit a service's bullet points**, find the service by its title, then update the lines under `items:`. Each bullet starts with `- ` (dash and space).
-
-**To add a new service**, copy an existing service block and change the text.
-
-**To remove a service**, delete the entire block from `- title:` down to the last item.
-
-### `src/data/work.yaml` — Work / Portfolio Page
-
-| Field | What it controls |
-|---|---|
-| `intro` | Text in the hero banner |
-| `heading` | Subheading below the hero |
-| `subtitle` | Text under the subheading |
-| `projects` | List of portfolio items |
-
-Each project has:
-- `image`: path to the image (see "Updating Work/Portfolio Images" below)
-- `caption`: text shown below the image
-- `category`: which filter tab it appears under
-
-### `src/data/testimonials.yaml` — Testimonials on Homepage
-
-Each testimonial has:
-- `quote`: the testimonial text
-- `name`: person's name
-- `title`: their job title
-- `company`: their company name
-
-**To add a new testimonial**, add a new block at the end:
-```yaml
-- quote: "Your testimonial text here."
-  name: First Last
-  title: Job Title
-  company: Company Name
-```
-
-**To remove a testimonial**, delete the entire block from `- quote:` to `company:`.
-
----
-
-## Updating Images
-
-### Logos (Organizations You've Worked With)
-
-Logo files live in **`src/assets/images/logos/`**.
-
-**To add a logo:**
-1. Go to `src/assets/images/logos/` on GitHub
-2. Click **"Add file" > "Upload files"**
-3. Drag and drop your logo image (PNG, JPG, or WebP)
-4. Commit the change
-
-The logo will automatically appear on the homepage. No other changes needed.
-
-**To remove a logo:**
-1. Go to `src/assets/images/logos/`
-2. Click on the file you want to remove
-3. Click the **trash can icon** (Delete this file)
-4. Commit the change
-
-**Tips for logos:**
-- PNG with a transparent background works best
-- Keep file sizes reasonable (under 200KB)
-- The logos are automatically resized to a consistent height
-
-### Work / Portfolio Images
-
-Portfolio images live in **`src/assets/images/work/`**.
-
-**To add a new portfolio image:**
-1. Upload the image to `src/assets/images/work/` on GitHub
-2. Then edit `src/data/work.yaml` and add a new project entry:
-```yaml
-- image: /images/work/your-new-image.jpg
-  caption: Description of the event
-  category: Full Service Event Coordination
-```
-
-Available categories (must match exactly):
-- `Full Service Event Coordination`
-- `Pre-Event Support`
-- `On-Site Support`
-- `Full Service Coordination / Virtual Consultation`
-
-**To remove a portfolio image:**
-1. Delete the image file from `src/assets/images/work/`
-2. Remove the matching entry from `src/data/work.yaml`
-
-### Headshot Photo
-
-Replace the file at **`src/assets/images/headshot.jpg`** with a new image. Keep the same filename.
-
-### Contact Page Image
-
-Replace the file at **`src/assets/images/contact-hero.jpg`** with a new image. Keep the same filename.
-
-### Site Logo
-
-Replace the file at **`public/images/logo.png`** with your new logo. Keep the same filename.
-
----
-
-## Updating Site Colors
-
-The website uses four main colors, defined in the file **`tailwind.config.mjs`**. Open this file on GitHub and look for the `colors` section:
-
-```js
-colors: {
-  salmon: '#ffad84',
-  green: '#8bbd6f',
-  cream: '#fffaba',
-  teal: '#2b4244',
-},
-```
-
-| Color name | Current value | Where it's used |
+| I want to… | Go to | Do this |
 |---|---|---|
-| `salmon` | `#ffad84` (peach/orange) | Accent color, buttons, highlights |
-| `green` | `#8bbd6f` (soft green) | Secondary accent |
-| `cream` | `#fffaba` (light yellow) | Background accents |
-| `teal` | `#2b4244` (dark green) | Dark backgrounds, text |
-
-**To change a color:**
-1. Open `tailwind.config.mjs` on GitHub
-2. Find the color you want to change (e.g. `salmon: '#ffad84'`)
-3. Replace the `#ffad84` part with your new color code — keep the quotes and the `#`
-4. Commit the change
-
-**How to get a color code:**
-- Go to [Google Color Picker](https://g.co/kgs/YbMCx3) — search "color picker" on Google
-- Pick your color and copy the **HEX** value (starts with `#`, e.g. `#ff6b35`)
-- Use that value in the config file
-
-**Example** — to change the salmon/peach color to a brighter orange:
-```js
-salmon: '#ff6b35',
-```
-
-> **Note:** The color *names* (salmon, green, cream, teal) are used throughout the website code. Only change the values (the `#...` codes), not the names themselves.
+| Add event photos | `src/assets/images/work/` | Upload, named `CLIENT_Event Title_SERVICE_1.jpg` |
+| Change a colour | `src/styles/theme.css` | Replace a hex code like `#FFFA64` |
+| Edit homepage or contact text | `src/data/site.yaml` | Edit the text after the colon |
+| Edit services | `src/data/services.yaml` | Edit the text after the colon |
+| Edit questions & answers | `src/data/faq.yaml` | Edit the text after the colon |
+| Add a testimonial | `src/data/testimonials.yaml` | Copy a block and change it |
+| Add a client logo | `src/assets/images/logos/` + `src/data/clients.yaml` | Upload the logo, add one entry |
+| Swap the headshot | `src/assets/images/headshot.jpg` | Upload a new file with the same name |
+| Swap the homepage photos | `src/assets/images/home/` | Replace `hero.jpg` or `feature.jpg` |
+| Swap the site logo | `public/images/logo.png` | Upload a new file with the same name |
 
 ---
 
-## Important Tips
+## How to edit on GitHub
 
-- **YAML formatting matters.** Don't change the indentation (the spaces at the beginning of lines). Only change the text after the colons.
-- **Quotes in text.** If your text contains a colon `:` or special characters, wrap it in double quotes: `"Your text here"`
-- **After committing changes**, the site will automatically rebuild and deploy (this may take a minute or two).
-- **Test on the live site** after making changes to make sure everything looks right.
+**Edit text:** open the file → click the **pencil icon** → change the text → **Commit changes**.
+
+**Upload a file:** open the folder → **Add file → Upload files** → drag your files in → **Commit changes**.
+
+**Replace a file:** upload a file with *exactly the same name* into the same folder. GitHub replaces the old one.
+
+**Delete a file:** open the file → **⋯ menu → Delete file** → **Commit changes**.
+
+---
+
+## Adding event photos
+
+Upload photos to **`src/assets/images/work/`**. The file name tells the website everything it needs:
+
+```
+CLIENT_Event Title_SERVICE_number.jpg
+```
+
+| Part | What to write | Example |
+|---|---|---|
+| CLIENT | The client's code from `src/data/clients.yaml` | `PBP`, `SHOPIFY`, `EFRY`, `BCSS`, `TEMPO` |
+| Event Title | The caption shown under the photo | `Client Appreciation` |
+| SERVICE | `FS` Full Service · `PE` Pre-Event · `OS` On-Site · `VC` Virtual | `FS` |
+| number | Any number, so file names stay unique | `8` |
+
+Examples: `PBP_Client Appreciation_FS_8.jpg`, `SHOPIFY_Offsite_FS_9.jpg`, `TEMPO_Community Event_PE_7.jpg`
+
+That's it: no other file to edit. The photo appears in the gallery with the right caption, and in the right filters (service and Corporate/Nonprofit/Community).
+
+**Tips**
+- Use **JPG or PNG**. iPhone photos are sometimes saved as **HEIC**, which won't show up. On iPhone, set *Settings → Camera → Formats → Most Compatible*, or export the photo as JPG first.
+- Big files are fine. The website resizes and compresses them automatically.
+- Use underscores `_` only between the four parts (spaces inside the title are fine).
+- To remove a photo, delete the file.
+- Photos that aren't ready to show can go in `src/assets/images/work-unsorted/`. That folder is ignored by the website.
+
+---
+
+## Changing colours
+
+Open **`src/styles/theme.css`**. Each colour has a name and a hex code:
+
+```css
+--yellow: #FFFA64;   /* "How we'll work together", Full Service */
+```
+
+Change only the code after the colon (keep the `#` and the `;`). Every place that colour is used updates. To find a hex code, search "color picker" on Google and copy the HEX value.
+
+| Name | Used for |
+|---|---|
+| `--ink` | Text, buttons, icons |
+| `--paper` | Page background |
+| `--white` | Cards |
+| `--muted` | Secondary text |
+| `--yellow` `--lime` `--pink` `--sky` | Colour sections, service colours, tiles and tags |
+
+Fonts are set in the same file. They're all free Google Fonts (Anton, Geist, Geist Mono).
+
+---
+
+## Editing text
+
+All text lives in **`src/data/`**:
+
+- **`site.yaml`**: homepage (hero, logo wall heading, About, process steps), the closing "Have an event coming up?" block, footer, contact page and checklist, and the main button label.
+- **`services.yaml`**: the four services: client quote, description, bullet points, colour and the involvement meter (`level` 1–4).
+- **`faq.yaml`**: questions and answers on the Services page.
+- **`work.yaml`**: Work page heading, intro and the three stats.
+- **`testimonials.yaml`**: client quotes.
+
+**Rules for these files**
+- Only change text **after** the colon. Don't change the indentation (spaces at the start of lines).
+- If your text contains a colon `:` or starts with a quote mark, wrap the whole thing in double quotes: `"Like this: example"`.
+
+---
+
+## Testimonials
+
+Each testimonial in **`src/data/testimonials.yaml`** has:
+
+```yaml
+  - name: First Last
+    title: "Job Title"
+    company: "Company"
+    excerpt: "The short version shown on the site. Wrap the **key phrase** in double asterisks to make it bold."
+    quote: "The full original quote (kept for reference)."
+```
+
+Keep excerpts to one or two sentences. Card colours rotate automatically.
+
+---
+
+## Client logos
+
+1. Upload the logo to **`src/assets/images/logos/`**. A PNG with a transparent background works best. Crop it tight, with no extra space around the logo.
+2. Add or update the client in **`src/data/clients.yaml`**:
+
+```yaml
+  - code: ACME
+    name: Acme Corp
+    sector: Corporate
+    logo: acme.png
+```
+
+Logos are shown in grey and sized automatically so they look balanced. The homepage shows them in the order of this list. `code` is also what you use at the start of photo names.
+
+---
+
+## Technical notes (for whoever maintains the code)
+
+- Built with [Astro](https://astro.build) + Tailwind, hosted on Vercel. Every push rebuilds; every branch gets a preview link.
+- Content is read from `src/data/*.yaml` and image folders by `src/lib/content.ts`.
+- Styles: `src/styles/theme.css` (tokens) and `src/styles/global.css` (layout).
+- Contact form posts to Formspree (URL in `site.yaml → contact.formspree_url`).
+- Run locally: `npm install`, then `npm run dev`.

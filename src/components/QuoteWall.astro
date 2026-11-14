@@ -1,0 +1,24 @@
+---
+import { site, testimonials, boldify } from '../lib/content';
+const siteData = site();
+const items = testimonials();
+// Card colours rotate through the palette.
+const colors = ['bg-yellow', 'bg-lime', 'bg-sky', 'bg-pink', 'bg-white'];
+---
+
+<section class="section">
+  <div class="wrap">
+    <div class="head rv">
+      <h2 class="h2">{siteData.testimonials_heading}<br /><span class="soft">{siteData.testimonials_heading_soft}</span></h2>
+    </div>
+    <div class="wall">
+      {items.map((t, i) => (
+        <figure class={`qc rv ${colors[i % colors.length]}`}>
+          <span class="mono">{t.company}</span>
+          <blockquote set:html={boldify(t.excerpt || t.quote)} />
+          <figcaption><b>{t.name}</b>{t.title}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

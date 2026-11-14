@@ -1,60 +1,77 @@
 # ============================================
-# TESTIMONIALS
-# Edit this file to add or update testimonials
+# TESTIMONIALS — shown as the quote wall on the Home and Work pages
+#
+# excerpt: the short version shown on the site (1–2 sentences).
+#          Wrap the key phrase in **double asterisks** to make it bold.
+# quote:   the full original quote (kept for reference).
+#
+# To add one: copy a block, paste it at the end, change the text.
+# Cards are coloured automatically in turn (yellow, lime, sky, pink, white).
 # ============================================
 
 testimonials:
-  - quote: "Kendra brought a level of thoroughness and foresight to her work that made every event or activation feel effortless. Her communication was always clear, timely, and proactive, ensuring we were all aligned through the process and every detail accounted for. ** What really stood out for me was her creativity and problem-solving mindset. No matter the challenge, Kendra approached it with a can-do attitude and a willingness to find the best solution **. I highly recommend Kendra to any organization looking for a friendly, detail-oriented, and collaborative professional to lead or support their marketing and event initiatives."
-    name: Carmen Donnell
-    title: Managing Director, North America
-    company: PayByPhone
+  - name: Carmen Donnell
+    title: "Managing Director, North America"
+    company: "PayByPhone"
+    excerpt: "Kendra brought a level of thoroughness and foresight that made every event **feel effortless**. Her communication was always **clear, timely and proactive**."
+    quote: "Kendra brought a level of thoroughness and foresight to her work that made every event or activation feel effortless. Her communication was always clear, timely, and proactive, ensuring we were all aligned through the process and every detail accounted for. ** What really stood out for me was her creativity and problem-solving mindset. No matter the challenge, Kendra approached it with a can-do attitude and a willingness to find the best solution **. I highly recommend Kendra to any organization looking for a friendly, detail-oriented, and collaborative professional to lead or support their marketing and event initiatives."
 
-  - quote: "I've had the pleasure of working with Kendra, and I can confidently say she is an exceptional marketing events coordinator. She's hardworking, highly organized, and always finds a way to get the job done — no matter how many moving parts are involved. ** Her ability to juggle multiple tasks while keeping everything running smoothly is truly impressive **. On top of that, she's an excellent communicator and a fantastic team player, making every project easier and more enjoyable. She's a true professional who brings organization and energy to every project. ** Her dedication and efficiency make her an invaluable asset to any team **."
-    name: Jesse Wood
-    title: Global Senior Visual Designer
-    company: PayByPhone
+  - name: Prachi Padiyar
+    title: "Engineering Program Management Lead"
+    company: "Shopify"
+    excerpt: "She planned and executed **over 50 team-wide initiatives**, from social rituals to a large-scale team-building event in Santa Monica."
+    quote: "Kendra was an invaluable asset to our team during her time at Shopify. ** She successfully planned and executed over 50 team-wide initiatives ranging from social rituals to a large-scale team-building event in Santa Monica. Her meticulous attention to detail ensured smooth execution of logistics, from coordination of securing hotel blocks and travel arrangements to managing team schedules and agendas.**  One of Kendra's standout strengths is her ability to make people feel comfortable and create clear, effective communication materials that resonate with a diverse audience. It was a pleasure to work with Kendra, and I was grateful for her contributions to our team."
 
-  - quote: "Kendra is an exceptionally organized, hard working, and diligent coworker. ** Her collaborative nature, ability to juggle multiple projects and deadlines simultaneously, while keeping a positive attitude make her an absolute pleasure to work with **. Whether planning our company's presence and activations at a large national trade show, or coordinating monthly webinars and newsletters, her ability to think outside of the box, to remain calm and focused under pressure, and contribute fresh ideas has made her a key asset on our team. ** I would highly recommend Kendra to anyone who is looking to hire an experienced and passionate events coordinator! **"
-    name: Virginia Smith
-    title: Marketing Manager
-    company: PayByPhone
+  - name: Kelly Potvin
+    title: "Executive Director"
+    company: "Elizabeth Fry Toronto"
+    excerpt: "Kendra has the \"it\" factor. She **gets ahead of the problems you don't see** coming right at you."
+    quote: " ** I can't recommend Kendra enough! Kendra has the \"it\" factor. She's smart, committed, has attention to detail and follows through on all of her commitments **. On top of that, she takes initiative and she gets ahead of the problems you don't see that are coming right at you. She is an amazing collaborator and worked well with colleagues and clients alike. As a manager who has had bad experiences hiring people who work remotely, Kendra restored my faith in committed staff who didn't need to be in the office to get the job done! ** Her work ethic combined with her honesty and reliability make her ideal for any company looking for someone with her skill set! **"
 
-  - quote: " ** During Kendra's tenure at Shopify, she was instrumental in ensuring that our internal events were impeccably organized and also deeply aligned with our values of inclusivity and collaboration **. Her ability to juggle multiple projects with precision and efficiency was truly remarkable. Kendra's expertise spanned a wide range of tasks, from coordinating town halls and team rituals to managing priority tracking and accountability measures. Beyond her technical abilities, Kendra exhibited strong leadership and communication skills, frequently partnering with various departments to facilitate seamless collaboration. ** Kendra is a dedicated and talented professional whose contributions consistently exceeded expectations.** "
-    name: Andrew Harder
-    title: UX Director
-    company: Shopify
+  - name: Virginia Smith
+    title: "Marketing Manager"
+    company: "PayByPhone"
+    excerpt: "Her ability to **remain calm and focused under pressure** and contribute fresh ideas made her a key asset on our team."
+    quote: "Kendra is an exceptionally organized, hard working, and diligent coworker. ** Her collaborative nature, ability to juggle multiple projects and deadlines simultaneously, while keeping a positive attitude make her an absolute pleasure to work with **. Whether planning our company's presence and activations at a large national trade show, or coordinating monthly webinars and newsletters, her ability to think outside of the box, to remain calm and focused under pressure, and contribute fresh ideas has made her a key asset on our team. ** I would highly recommend Kendra to anyone who is looking to hire an experienced and passionate events coordinator! **"
 
-  - quote: "I had the opportunity to work with Kendra at Shopify where she managed event logistics, coordinated team communications, and supported senior leadership. ** What impressed me most was Kendra's ability to make others feel comfortable **. Her genuine interest in improving employee engagement and promoting a positive culture was evident in everything she did. ** Kendra was proactive, ensuring that leadership's needs were met, and had the foresight to anticipate potential challenges **. Her hard work and organizational skills made a tangible difference in the way our team worked together. I'd recommend her to anyone looking for someone to enhance internal communications and boost team morale."
-    name: Amir Kabbara
-    title: Sr Director of Product
-    company: Shopify
+  - name: Amir Kabbara
+    title: "Sr Director of Product"
+    company: "Shopify"
+    excerpt: "What impressed me most was her ability to **make others feel comfortable**."
+    quote: "I had the opportunity to work with Kendra at Shopify where she managed event logistics, coordinated team communications, and supported senior leadership. ** What impressed me most was Kendra's ability to make others feel comfortable **. Her genuine interest in improving employee engagement and promoting a positive culture was evident in everything she did. ** Kendra was proactive, ensuring that leadership's needs were met, and had the foresight to anticipate potential challenges **. Her hard work and organizational skills made a tangible difference in the way our team worked together. I'd recommend her to anyone looking for someone to enhance internal communications and boost team morale."
 
-  - quote: "Kendra was an invaluable asset to our team during her time at Shopify. ** She successfully planned and executed over 50 team-wide initiatives ranging from social rituals to a large-scale team-building event in Santa Monica. Her meticulous attention to detail ensured smooth execution of logistics, from coordination of securing hotel blocks and travel arrangements to managing team schedules and agendas.**  One of Kendra's standout strengths is her ability to make people feel comfortable and create clear, effective communication materials that resonate with a diverse audience. It was a pleasure to work with Kendra, and I was grateful for her contributions to our team."
-    name: Prachi Padiyar
-    title: Engineering Program Management Lead
-    company: Shopify
+  - name: Valeria González Rios
+    title: "Development Officer"
+    company: "BC Schizophrenia Society"
+    excerpt: "Adept at **working within budget** while making sure events were engaging and well-received."
+    quote: "I had the pleasure of working with Kendra at BC Schizophrenia Society, where she was responsible for managing several events, including awareness campaigns, staff trainings, and member meetings. ** Kendra demonstrated excellent project management skills, handling everything from securing venues to coordinating transportation and entertainment. She was also adept at working within budget constraints while ensuring the events were engaging and well-received by attendees **. Kendra was an excellent communicator, ensuring that all stakeholders were well informed. I have no doubt that Kendra would be a great asset to any team and would continue to drive successful events for years to come."
 
-  - quote: " ** I can't recommend Kendra enough! Kendra has the \"it\" factor. She's smart, committed, has attention to detail and follows through on all of her commitments **. On top of that, she takes initiative and she gets ahead of the problems you don't see that are coming right at you. She is an amazing collaborator and worked well with colleagues and clients alike. As a manager who has had bad experiences hiring people who work remotely, Kendra restored my faith in committed staff who didn't need to be in the office to get the job done! ** Her work ethic combined with her honesty and reliability make her ideal for any company looking for someone with her skill set! **"
-    name: Kelly Potvin
-    title: Executive Director
-    company: Elizabeth Fry Toronto
+  - name: Andrew Harder
+    title: "UX Director"
+    company: "Shopify"
+    excerpt: "Our internal events were **impeccably organized** and deeply aligned with our values of inclusivity and collaboration."
+    quote: " ** During Kendra's tenure at Shopify, she was instrumental in ensuring that our internal events were impeccably organized and also deeply aligned with our values of inclusivity and collaboration **. Her ability to juggle multiple projects with precision and efficiency was truly remarkable. Kendra's expertise spanned a wide range of tasks, from coordinating town halls and team rituals to managing priority tracking and accountability measures. Beyond her technical abilities, Kendra exhibited strong leadership and communication skills, frequently partnering with various departments to facilitate seamless collaboration. ** Kendra is a dedicated and talented professional whose contributions consistently exceeded expectations.** "
 
-  - quote: "I had the pleasure of working with Kendra at Elizabeth Fry Toronto during her time there as Communications and Fundraising Coordinator. ** Kendra was highly resourceful and played a pivotal role in organizing major events for the organization, including holiday parties for the women we served, United Way's workplace campaigns and annual general meetings. Kendra has an eye for detail and an incredible ability to manage multiple priorities to ensure flawless coordination and execution of events **. She was instrumental in elevating Elizabeth Fry Toronto's public profile and engagement with a wider audience. Kendra's thoughtful event debriefs also guided the organization to continuously improve on its community engagement approaches and delivery."
-    name: Vibhuti Mehra
-    title: Director of Programs
-    company: Elizabeth Fry Toronto
+  - name: David Osubronie
+    title: "Manager of Operations"
+    company: "Regent Park Film Festival"
+    excerpt: "She organized and supported **over 100 volunteers**, making sure everyone was trained, equipped and ready."
+    quote: "Kendra was an outstanding Volunteers Coordinator for the Regent Park Film Festival. She was responsible for organizing and supporting over 100 volunteers, ensuring that everyone was trained, equipped, and ready to contribute. She developed a clear and comprehensive volunteer manual, which helped set expectations and made it easy for volunteers to understand their roles. She also effectively managed communications, ensuring volunteers felt supported and engaged throughout the event. ** One of the most impressive aspects of Kendra's work was their ability to build relationships with community organizations, helping to secure in-kind sponsorships for the festival. Her contributions were invaluable in ensuring the festival ran smoothly and provided a positive experience for both volunteers and attendees.**"
 
-  - quote: "I had the pleasure of working with Kendra at BC Schizophrenia Society, where she was responsible for managing several events, including awareness campaigns, staff trainings, and member meetings. ** Kendra demonstrated excellent project management skills, handling everything from securing venues to coordinating transportation and entertainment. She was also adept at working within budget constraints while ensuring the events were engaging and well-received by attendees **. Kendra was an excellent communicator, ensuring that all stakeholders were well informed. I have no doubt that Kendra would be a great asset to any team and would continue to drive successful events for years to come."
-    name: "Valeria Gonz\xE1lez Rios"
-    title: Development Officer
-    company: BC Schizophrenia Society
+  - name: Jesse Wood
+    title: "Global Senior Visual Designer"
+    company: "PayByPhone"
+    excerpt: "She always finds a way to get the job done, **no matter how many moving parts** are involved."
+    quote: "I've had the pleasure of working with Kendra, and I can confidently say she is an exceptional marketing events coordinator. She's hardworking, highly organized, and always finds a way to get the job done — no matter how many moving parts are involved. ** Her ability to juggle multiple tasks while keeping everything running smoothly is truly impressive **. On top of that, she's an excellent communicator and a fantastic team player, making every project easier and more enjoyable. She's a true professional who brings organization and energy to every project. ** Her dedication and efficiency make her an invaluable asset to any team **."
 
-  - quote: "Kendra was an outstanding Volunteers Coordinator for the Regent Park Film Festival. She was responsible for organizing and supporting over 100 volunteers, ensuring that everyone was trained, equipped, and ready to contribute. She developed a clear and comprehensive volunteer manual, which helped set expectations and made it easy for volunteers to understand their roles. She also effectively managed communications, ensuring volunteers felt supported and engaged throughout the event. ** One of the most impressive aspects of Kendra's work was their ability to build relationships with community organizations, helping to secure in-kind sponsorships for the festival. Her contributions were invaluable in ensuring the festival ran smoothly and provided a positive experience for both volunteers and attendees.**"
-    name: David Osubronie
-    title: Manager of Operations
-    company: Regent Park Film Festival
+  - name: Vibhuti Mehra
+    title: "Director of Programs"
+    company: "Elizabeth Fry Toronto"
+    excerpt: "An incredible ability to manage multiple priorities for **flawless coordination and execution**."
+    quote: "I had the pleasure of working with Kendra at Elizabeth Fry Toronto during her time there as Communications and Fundraising Coordinator. ** Kendra was highly resourceful and played a pivotal role in organizing major events for the organization, including holiday parties for the women we served, United Way's workplace campaigns and annual general meetings. Kendra has an eye for detail and an incredible ability to manage multiple priorities to ensure flawless coordination and execution of events **. She was instrumental in elevating Elizabeth Fry Toronto's public profile and engagement with a wider audience. Kendra's thoughtful event debriefs also guided the organization to continuously improve on its community engagement approaches and delivery."
 
-  - quote: "Kendra played a pivotal role in organizing and managing volunteers for the Regent Park Film Festival. Kendra has such an invigorating presence, she remained committed and engaged with the tasks at hand. She was proactive in identifying areas of need, recruiting volunteers, and ensuring that everyone had the resources and information they needed to be successful. ** Kendra's ability to think on her feet and adapt quickly to any challenges that arose was remarkable.** Additionally, her efforts in creating a feedback system during the festival allowed us to improve future events. ** Kendra's dedication and attention to detail helped ensure a smooth execution of the festival, and she demonstrated excellent leadership throughout.**"
-    name: Elizabeth Mudenyo
-    title: Special Projects Coordinator
-    company: Regent Park Film Festival
+  - name: Elizabeth Mudenyo
+    title: "Special Projects Coordinator"
+    company: "Regent Park Film Festival"
+    excerpt: "Her ability to **think on her feet** and adapt quickly to any challenge was remarkable."
+    quote: "Kendra played a pivotal role in organizing and managing volunteers for the Regent Park Film Festival. Kendra has such an invigorating presence, she remained committed and engaged with the tasks at hand. She was proactive in identifying areas of need, recruiting volunteers, and ensuring that everyone had the resources and information they needed to be successful. ** Kendra's ability to think on her feet and adapt quickly to any challenges that arose was remarkable.** Additionally, her efforts in creating a feedback system during the festival allowed us to improve future events. ** Kendra's dedication and attention to detail helped ensure a smooth execution of the festival, and she demonstrated excellent leadership throughout.**"

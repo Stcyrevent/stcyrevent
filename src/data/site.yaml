@@ -1,42 +1,83 @@
 # ============================================
-# SITE CONFIGURATION
-# Edit this file to update site-wide content
+# SITE — general info and homepage text
+# Edit the text after each colon. Keep the indentation (spaces) as is.
+# If your text contains a colon ":" wrap it in double quotes.
 # ============================================
 
 name: St. Cyr Event Co.
 email: stcyr.event.co@gmail.com
-location: Vancouver, BC — Operating across Canada
-copyright: "© 2025 St. Cyr Event Co. All rights reserved."
+location: Vancouver · Across Canada
+footer_tagline: Events, expertly run.
 
-# Social links (add or remove as needed)
+# Main button label used across the site
+cta_label: Get in touch
+
 socials:
   - platform: LinkedIn
     url: https://www.linkedin.com/company/st-cyr-event-co/
-    icon: linkedin
 
-# Navigation links
 nav:
   - label: Services
     href: /services
   - label: Work
     href: /past-work
-  - label: Get In Touch
-    href: /get-in-touch
+  - label: About
+    href: /#about
 
-# Homepage content
+# ---------- HOMEPAGE ----------
+# Hero photo: src/assets/images/home/hero.jpg (replace the file, keep the name)
 hero:
   headline: St. Cyr Event Co.
-  tagline: A freelance consultancy specializing in event coordination, project management, and marketing support for lean teams who need extra capacity.
+  tagline: Event coordination, project management and marketing support for lean teams that need extra capacity.
+  secondary_button: See work
 
+# Logo wall. Logos come from src/data/clients.yaml
+# Photo on the right: src/assets/images/home/feature.jpg
+logo_wall:
+  heading: Trusted by corporate and nonprofit teams
+  heading_soft: across Canada.
+  feature_number: 95
+  feature_label: events planned and delivered
+
+# About section. Headshot: src/assets/images/headshot.jpg
 about:
-  intro: I help organizations plan and execute impactful events that feel thoughtful, organized, and aligned with their goals.
-  story: I chose my last name, St. Cyr, as the foundation of my business because it reflects how I work. I’ve learned that when events are planned with sincerity and care, the quality shows; leading to better experiences, stronger relationships, and work you can truly stand behind.
-  experience: With close to a decade of experience across corporate and non-profit sectors, I bring a calm, solutions-oriented approach to every engagement. Whether it's a multi-day offsite, a product launch, or a community event I offer practical support that helps teams stay focused and confident.
-  headshot: /images/headshot.jpg
+  heading: Hi, I'm Kendra.
+  intro: I help organizations plan and run events that feel thoughtful, organized and true to their goals.
+  experience: For close to a decade I've worked with corporate and nonprofit teams on offsites, launches and community events.
+  story: I chose my last name, St. Cyr, as the foundation of my business because it reflects how I work. I've learned that when events are planned with sincerity and care, the quality shows, leading to better experiences, stronger relationships, and work you can truly stand behind.
 
-organizations:
-  heading: Organizations I've Worked With
-  description: Clients, employers, and collaborators across corporate, nonprofit, and community work.
-  logos:
-    - /images/logos/client-logos-1.png
-    - /images/logos/client-logos-2.png
+services_preview:
+  heading: How I can help
+  subheading: Bring me in for the whole event, or just where you need backup.
+
+process:
+  heading: How we'll work together
+  steps:
+    - title: Intro call
+      text: Tell me about the event and where you're stretched.
+    - title: Proposal
+      text: I'll recommend the right support, with a clear scope.
+    - title: Plan
+      text: I plug into your team and keep everything on track.
+    - title: Run the day
+      text: On site from setup to debrief, so you can enjoy it.
+
+testimonials_heading: What clients say
+testimonials_heading_soft: about working with Kendra.
+
+# Closing call-to-action (shown at the bottom of every page)
+closing:
+  heading: Have an event coming up?
+  text: Let's make it thoughtful, organized and stress-free.
+
+# ---------- CONTACT PAGE ----------
+contact:
+  heading: Let's talk
+  intro: Tell me what you're planning. I'd love to help.
+  formspree_url: https://formspree.io/f/mlgpynvq
+  checklist:
+    - Full planning, or just the pieces you need
+    - Corporate and nonprofit events of any size
+    - Calm, organized support from start to finish
+    - Trusted by teams at Shopify, PayByPhone and more
+  success: Thanks! I'll be in touch soon.

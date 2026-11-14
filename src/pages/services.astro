@@ -1,117 +1,82 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { readFileSync } from 'fs';
-import { parse } from 'yaml';
+import { services, load } from '../lib/content';
 
-const servicesData = parse(readFileSync('src/data/services.yaml', 'utf-8'));
-
-const categoryMap: Record<string, string> = {
-  'Full Service Event Coordination': 'Full Service Event Coordination',
-  'Pre-Event Support Coordination': 'Pre-Event Support',
-  'On-Site Management': 'On-Site Support',
-  'Virtual Event Consultation': 'Full Service Coordination / Virtual Consultation',
-};
+const data = services();
+const faq = load('faq');
+const addons = data.addons;
+const tileColors = ['bg-yellow', 'bg-lime', 'bg-pink', 'bg-sky'];
 ---
 
-<Layout title="Services" description="Freelance event coordination, project management, and marketing support services by St. Cyr Event Co.">
-  <!-- Hero -->
-  <section class="relative bg-banner-bg text-white py-20 md:py-28">
-    <div class="absolute inset-0 bg-cover bg-center opacity-20" style={`background-image: url('${servicesData.hero_image}');`}></div>
-    <div class="relative max-w-3xl mx-auto px-6 text-center">
-      <h1 class="text-4xl md:text-5xl font-light mb-6">Services</h1>
-      <p class="text-lg md:text-xl leading-relaxed opacity-90">{servicesData.intro}</p>
-    </div>
-  </section>
+<Layout title="Services" description="Event coordination, pre-event support, on-site management and virtual event consultation by St. Cyr Event Co.">
+  <div class="wrap page-head rv" style="padding-bottom:40px">
+    <h1 class="d1">{data.heading}</h1>
+    <p class="lg">{data.intro}</p>
+  </div>
 
-  <!-- Services List -->
-  <section class="py-16 md:py-24">
-    <div class="max-w-4xl mx-auto px-6">
-      <p class="text-lg text-teal/80 mb-12 reveal">{servicesData.subtitle}</p>
-
-      <div class="space-y-6">
-        {servicesData.services.map((service: { title: string; description: string; items: string[] }, index: number) => (
-          <div id={`service-${index}`} class="accordion-item border-l-4 border-green bg-white shadow-sm reveal" data-open={index === 0 ? 'true' : 'false'}>
-            <button class="accordion-toggle flex items-center justify-between cursor-pointer p-6 bg-accordion-bg hover:bg-accordion-hover-bg transition-colors w-full text-left">
-              <h2 class="text-xl font-semibold text-teal">{service.title}</h2>
-              <svg class="accordion-icon w-5 h-5 text-green transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div class="accordion-content overflow-hidden transition-all duration-400 ease-in-out" style={index === 0 ? '' : 'max-height: 0; opacity: 0;'}>
-              <div class="p-6 pt-4">
-                <p class="text-teal/70 italic mb-4">{service.description}</p>
-                <ul class="space-y-2">
-                  {service.items.map((item: string) => (
-                    <li class="flex items-start gap-2">
-                      <span class="text-salmon mt-1">&#x2022;</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href={`/past-work?category=${encodeURIComponent(categoryMap[service.title] || service.title)}`}
-                  class="inline-block mt-6 text-salmon hover:text-salmon/80 font-medium transition-colors"
-                >
-                  See examples &rarr;
-                </a>
-              </div>
+  <!-- Which sounds like you? -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="picks" data-stagger>
+        {data.services.map((x: any) => (
+          <a class={`pick bg-${x.color}`} href={`#${x.code.toLowerCase()}`}>
+            <blockquote>"{x.client_voice}"</blockquote>
+            <div class="sig" aria-label={`Involvement ${x.level} of 4`}>
+              {[1, 2, 3, 4].map((n) => <i class={n <= x.level ? 'on' : ''}></i>)}
             </div>
-          </div>
+            <span class="link">{x.title}</span>
+          </a>
         ))}
       </div>
-
-      <!-- Add-on services -->
-      <blockquote class="mt-12 border-l-4 border-salmon pl-6 py-4 text-teal/80 italic bg-blockquote-bg reveal">
-        {servicesData.addons}
-      </blockquote>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-16 md:py-20 bg-cta-bg">
-    <div class="max-w-4xl mx-auto px-6 text-center reveal">
-      <p class="text-lg text-teal font-medium mb-4">Interested in working together? Let's chat about your next event.</p>
-      <a href="/get-in-touch" class="inline-block px-10 py-4 bg-btn-primary-bg text-white rounded-sm font-semibold text-lg hover:bg-btn-primary-hover transition-colors shadow-md">
-        Get In Touch
-      </a>
+  <!-- Service panels (stack as you scroll) -->
+  <section class="section" style="padding-top:24px">
+    <div class="wrap">
+      {data.services.map((x: any, i: number) => (
+        <div class={`panel bg-${x.color}`} id={x.code.toLowerCase()}>
+          <div>
+            <div class="crop"><span class="num">{String(i + 1).padStart(2, '0')}</span></div>
+            <h2 class="h2">{x.title}</h2>
+            <p class="lg">{x.for}</p>
+          </div>
+          <div>
+            <ul>{x.items.map((it: string) => <li>{it}</li>)}</ul>
+            <div class="out"><p>{x.outcome}</p><a class="link" href={`/past-work?service=${x.code}`}>See examples</a></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Add-ons -->
+  <section class="section addon-sec bg-ink">
+    <div class="wrap">
+      <div class="head rv">
+        <h2 class="h2" style="color:#fff">{addons.heading} <span style="color:#9a9a9a">{addons.heading_soft}</span></h2>
+        <p class="body" style="color:#9a9a9a">{addons.text}</p>
+      </div>
+    </div>
+    <div class="marquee rv">
+      <div class="track">
+        {[...addons.items, ...addons.items, ...addons.items, ...addons.items].map((t: string, i: number) => {
+          const dup = i >= addons.items.length;
+          return <span class={`tile ${tileColors[i % tileColors.length]} ${dup ? 'dup' : ''}`} aria-hidden={dup ? 'true' : undefined}>{t}</span>;
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="wrap faq">
+      <div class="head rv"><h2 class="h2">{faq.heading}</h2></div>
+      <div class="rv">
+        {faq.questions.map((f: any) => (
+          <details><summary>{f.q}</summary><p class="body">{f.a}</p></details>
+        ))}
+      </div>
     </div>
   </section>
 </Layout>
-
-<script>
-  document.querySelectorAll('.accordion-item').forEach((item) => {
-    const toggle = item.querySelector('.accordion-toggle')!;
-    const content = item.querySelector('.accordion-content') as HTMLElement;
-    const icon = item.querySelector('.accordion-icon') as HTMLElement;
-    const isOpen = item.getAttribute('data-open') === 'true';
-
-    // Set initial state for open items
-    if (isOpen) {
-      content.style.maxHeight = content.scrollHeight + 'px';
-      content.style.opacity = '1';
-      icon.style.transform = 'rotate(180deg)';
-    }
-
-    toggle.addEventListener('click', () => {
-      const currentlyOpen = content.style.maxHeight !== '0px' && content.style.maxHeight !== '';
-
-      if (currentlyOpen) {
-        content.style.maxHeight = content.scrollHeight + 'px';
-        requestAnimationFrame(() => {
-          content.style.maxHeight = '0';
-          content.style.opacity = '0';
-        });
-        icon.style.transform = 'rotate(0deg)';
-      } else {
-        content.style.maxHeight = content.scrollHeight + 'px';
-        content.style.opacity = '1';
-        icon.style.transform = 'rotate(180deg)';
-        content.addEventListener('transitionend', () => {
-          if (content.style.opacity === '1') {
-            content.style.maxHeight = 'none';
-          }
-        }, { once: true });
-      }
-    });
-  });
-</script>

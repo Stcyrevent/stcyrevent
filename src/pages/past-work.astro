@@ -1,208 +1,145 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import { readFileSync } from 'fs';
-import { parse } from 'yaml';
+import QuoteWall from '../components/QuoteWall.astro';
+import { Image, getImage } from 'astro:assets';
+import { load, workPhotos, SERVICE_NAMES } from '../lib/content';
 
-const workData = parse(readFileSync('src/data/work.yaml', 'utf-8'));
+const data = load('work');
+const photos = workPhotos();
 
-// Import all work images for optimization
-const allWorkImages = import.meta.glob<{ default: ImageMetadata }>(
-  '../assets/images/work/*.{jpg,jpeg,png,JPG,JPEG,PNG}',
-  { eager: true }
-);
-
-// Map YAML paths to imported image metadata
-const projects = workData.projects.map((project: { image: string; caption: string; category: string }) => {
-  const filename = project.image.split('/').pop();
-  const match = Object.entries(allWorkImages).find(([key]) => key.endsWith(filename!));
-  return {
-    ...project,
-    imageSrc: match ? match[1].default : null,
-  };
-});
-
-// Get unique categories
-const categories = [...new Set(workData.projects.map((p: { category: string }) => p.category))] as string[];
+// Filters: services first, then sectors — only the ones that have photos.
+const serviceFilters = Object.keys(SERVICE_NAMES).filter((c) => photos.some((p) => p.service === c));
+const sectorFilters = [...new Set(photos.map((p) => p.sector).filter(Boolean))].filter((s) => s !== 'Private');
+const pad = (n: number) => String(n).padStart(2, '0');
+// Large versions for the main viewer (loaded one at a time by the script below)
+const large = await Promise.all(photos.map((p) => getImage({ src: p.src, width: 1800, format: 'webp' })));
 ---
 
-<Layout title="Work" description="Portfolio of events coordinated by St. Cyr Event Co. — corporate events, community events, conferences, and more.">
-  <!-- Hero -->
-  <section class="relative bg-banner-bg text-white py-20 md:py-28">
-    <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('/images/services-hero.jpg');"></div>
-    <div class="relative max-w-3xl mx-auto px-6 text-center">
-      <h1 class="text-4xl md:text-5xl font-light mb-6">Work</h1>
-      <p class="text-lg md:text-xl leading-relaxed opacity-90">{workData.intro}</p>
-    </div>
-  </section>
+<Layout title="Work" description="Event photos and past projects by St. Cyr Event Co. — client appreciation events, offsites, AGMs, trade shows and community events.">
+  <div class="wrap page-head rv">
+    <h1 class="d1">{data.heading}</h1>
+    <p class="lg">{data.intro}</p>
+  </div>
 
-  <!-- Subheading -->
-  <section class="pt-10 pb-4 md:pt-14 md:pb-6">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-2xl font-light text-green mb-2 reveal">{workData.heading}</h2>
-      <p class="text-teal/70 reveal">{workData.subtitle}</p>
+  <div class="wrap" id="gallery">
+    <div class="toolbar">
+      <div class="filters" id="filters">
+        <button class="on" data-f="all">All</button>
+        {serviceFilters.map((c) => <button data-f={`svc:${c}`}>{SERVICE_NAMES[c]}</button>)}
+        {sectorFilters.length > 0 && <span class="sep"></span>}
+        {sectorFilters.map((s) => <button data-f={`sec:${s}`}>{s}</button>)}
+      </div>
+      <div class="view"><button class="on" data-mode="viewer">Large</button><button data-mode="grid">Grid</button></div>
     </div>
-  </section>
 
-  <!-- Category Filter -->
-  <section class="pb-6">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-wrap gap-3 reveal" id="filter-buttons">
-        <button
-          class="filter-btn px-4 py-2 rounded-sm text-sm font-medium transition-colors bg-filter-btn-active-bg text-white"
-          data-category="all"
-        >
-          All
-        </button>
-        {categories.map((cat) => (
-          <button
-            class="filter-btn px-4 py-2 rounded-sm text-sm font-medium transition-colors bg-filter-btn-bg text-teal hover:bg-filter-btn-active-bg hover:text-white"
-            data-category={cat}
-          >
-            {cat}
+    <div class="viewer">
+      <div class="stage" id="stage">
+        {photos[0] && <img class="stage-img on" id="stageImg" src={large[0].src} alt={`${photos[0].title} — ${photos[0].client}`} />}
+        <span class="count mono" id="count">01 / {pad(photos.length)}</span>
+        <button class="nav-btn prev" data-step="-1" aria-label="Previous photo">←</button>
+        <button class="nav-btn next" data-step="1" aria-label="Next photo">→</button>
+      </div>
+      <div class="capbar">
+        <p class="h3" id="capT">{photos[0]?.title}</p>
+        <div class="meta"><span class="mono" id="capA">{photos[0]?.client}</span><span class="mono" id="capB">{photos[0]?.serviceName}</span></div>
+      </div>
+      <div class="strip" id="strip">
+        {photos.map((p, i) => (
+          <button class={`th ${i === 0 ? 'on' : ''}`} data-i={i} aria-label={`Show ${p.title}`}>
+            <Image src={p.src} alt="" width={280} />
           </button>
         ))}
       </div>
     </div>
-  </section>
 
-  <!-- Gallery -->
-  <section class="pb-16 md:pb-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6" id="gallery">
-        {projects.map((project: { image: string; caption: string; category: string; imageSrc: ImageMetadata | null }) => (
-          project.imageSrc && (
-            <div class="break-inside-avoid group gallery-item" data-category={project.category}>
-              <button
-                class="lightbox-trigger w-full text-left cursor-zoom-in"
-                data-caption={project.caption}
-                data-category={project.category}
-              >
-                <div class="overflow-hidden rounded bg-stone-100">
-                  <Image
-                    src={project.imageSrc}
-                    alt={project.caption}
-                    class="w-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                    width={600}
-                  />
-                </div>
-                <div class="mt-2 px-1">
-                  <p class="font-medium text-teal text-sm">{project.caption}</p>
-                  <p class="text-xs text-teal/60">{project.category}</p>
-                </div>
-              </button>
-            </div>
-          )
+    <div class="gridv" id="gridv">
+      {photos.map((p, i) => (
+        <button class="th" data-i={i} aria-label={`Open ${p.title}`}>
+          <Image src={p.src} alt={`${p.title} — ${p.client}`} width={600} />
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="stats" data-stagger>
+        {data.stats.map((st: any) => (
+          <div class={`stat bg-${st.color}`}><span class="mono">{st.label}</span><span class="num" data-count={st.number}>{st.number}+</span></div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-16 md:py-20 bg-section-alt-bg">
-    <div class="max-w-4xl mx-auto px-6 text-center reveal">
-      <p class="text-lg text-teal font-medium mb-4">Like what you see? Let's make your next event happen.</p>
-      <a href="/get-in-touch" class="inline-block px-10 py-4 bg-btn-primary-bg text-white rounded-sm font-semibold text-lg hover:bg-btn-primary-hover transition-colors shadow-md">
-        Get In Touch
-      </a>
-    </div>
-  </section>
+  <QuoteWall />
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="fixed inset-0 z-[100] hidden bg-black/90 flex items-center justify-center" role="dialog" aria-modal="true">
-    <button id="lightbox-close" class="absolute top-4 right-4 text-white/80 hover:text-white p-2 z-10" aria-label="Close lightbox">
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-    <div class="max-w-5xl max-h-[90vh] mx-4 flex flex-col items-center">
-      <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[80vh] object-contain rounded" />
-      <div class="mt-4 text-center">
-        <p id="lightbox-caption" class="text-white font-medium"></p>
-        <p id="lightbox-category" class="text-white/60 text-sm mt-1"></p>
-      </div>
-    </div>
-  </div>
+  <script define:vars={{ meta: photos.map((p, i) => ({ t: p.title, c: p.client, s: p.service, n: p.serviceName, x: p.sector, u: large[i].src })) }}>
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => [...document.querySelectorAll(s)];
+    const img = $('#stageImg');
+    const preload = (i) => { if (meta[i]) { const im = new Image(); im.src = meta[i].u; } };
+    const strip = $$('#strip .th');
+    const grid = $$('#gridv .th');
+    let list = meta.map((_, i) => i);
+    let cur = 0;
+    const pad = (n) => String(n).padStart(2, '0');
+
+    function show(k) {
+      if (!list.length) return;
+      cur = (k + list.length) % list.length;
+      const idx = list[cur];
+      img.classList.remove('on');
+      const next = new Image();
+      next.onload = () => { img.src = meta[idx].u; img.alt = meta[idx].t + ' — ' + meta[idx].c; img.classList.add('on'); };
+      next.src = meta[idx].u;
+      preload(list[(cur + 1) % list.length]);
+      strip.forEach((t, i) => t.classList.toggle('on', i === idx));
+      const m = meta[idx];
+      $('#capT').textContent = m.t;
+      $('#capA').textContent = m.c;
+      $('#capB').textContent = m.n;
+      $('#count').textContent = pad(cur + 1) + ' / ' + pad(list.length);
+      const a = strip[idx], st = $('#strip');
+      st.scrollTo({ left: a.offsetLeft - st.clientWidth / 2 + a.clientWidth / 2, behavior: 'smooth' });
+    }
+
+    function applyFilter(f) {
+      list = meta.map((m, i) => i).filter((i) => {
+        const m = meta[i];
+        if (f === 'all') return true;
+        if (f.startsWith('svc:')) return m.s === f.slice(4);
+        if (f.startsWith('sec:')) return m.x === f.slice(4);
+        return true;
+      });
+      const keep = new Set(list);
+      strip.forEach((t, i) => t.classList.toggle('hide', !keep.has(i)));
+      grid.forEach((t, i) => t.classList.toggle('hide', !keep.has(i)));
+      $$('#filters button').forEach((b) => b.classList.toggle('on', b.dataset.f === f));
+      show(0);
+    }
+
+    function setMode(m) {
+      $('#gallery').classList.toggle('mode-grid', m === 'grid');
+      $$('.view button').forEach((b) => b.classList.toggle('on', b.dataset.mode === m));
+    }
+
+    $('#filters').addEventListener('click', (e) => { const b = e.target.closest('[data-f]'); if (b) applyFilter(b.dataset.f); });
+    $('#strip').addEventListener('click', (e) => { const t = e.target.closest('[data-i]'); if (t) show(list.indexOf(Number(t.dataset.i))); });
+    $('#gridv').addEventListener('click', (e) => {
+      const t = e.target.closest('[data-i]'); if (!t) return;
+      setMode('viewer'); show(list.indexOf(Number(t.dataset.i)));
+      $('#stage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    $$('#stage [data-step]').forEach((b) => b.addEventListener('click', () => show(cur + Number(b.dataset.step))));
+    $$('.view button').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode)));
+    document.addEventListener('keydown', (e) => {
+      if (e.target.closest && e.target.closest('input,textarea,select')) return;
+      if (e.key === 'ArrowRight') show(cur + 1);
+      if (e.key === 'ArrowLeft') show(cur - 1);
+    });
+
+    // Links from the Services page: /past-work?service=FS
+    const svc = new URLSearchParams(location.search).get('service');
+    if (svc && $(`#filters [data-f="svc:${svc.toUpperCase()}"]`)) applyFilter('svc:' + svc.toUpperCase());
+  </script>
 </Layout>
-
-<script>
-  // Category filtering
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-
-  filterButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const category = (btn as HTMLElement).dataset.category;
-
-      // Update button styles
-      filterButtons.forEach((b) => {
-        b.classList.remove('bg-filter-btn-active-bg', 'text-white');
-        b.classList.add('bg-filter-btn-bg', 'text-teal');
-      });
-      btn.classList.remove('bg-filter-btn-bg', 'text-teal');
-      btn.classList.add('bg-filter-btn-active-bg', 'text-white');
-
-      // Filter items
-      galleryItems.forEach((item) => {
-        const el = item as HTMLElement;
-        if (category === 'all' || el.dataset.category === category) {
-          el.style.display = '';
-        } else {
-          el.style.display = 'none';
-        }
-      });
-    });
-  });
-
-  // Apply category filter from URL param (for links from services page)
-  const urlParams = new URLSearchParams(window.location.search);
-  const categoryParam = urlParams.get('category');
-  if (categoryParam) {
-    const matchBtn = Array.from(filterButtons).find(
-      (btn) => (btn as HTMLElement).dataset.category === categoryParam
-    );
-    if (matchBtn) (matchBtn as HTMLElement).click();
-  }
-
-  // Lightbox
-  const lightbox = document.getElementById('lightbox')!;
-  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
-  const lightboxCaption = document.getElementById('lightbox-caption')!;
-  const lightboxCategory = document.getElementById('lightbox-category')!;
-
-  document.querySelectorAll('.lightbox-trigger').forEach((trigger) => {
-    trigger.addEventListener('click', () => {
-      const img = trigger.querySelector('img')!;
-      // Use the full-size src (Astro may generate srcset)
-      const srcset = img.getAttribute('srcset');
-      let fullSrc = img.src;
-      if (srcset) {
-        const sources = srcset.split(',').map(s => s.trim());
-        fullSrc = sources[sources.length - 1].split(' ')[0];
-      }
-      lightboxImg.src = fullSrc;
-      lightboxImg.alt = (trigger as HTMLElement).dataset.caption || '';
-      lightboxCaption.textContent = (trigger as HTMLElement).dataset.caption || '';
-      lightboxCategory.textContent = (trigger as HTMLElement).dataset.category || '';
-      lightbox.classList.remove('hidden');
-      lightbox.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  function closeLightbox() {
-    lightbox.classList.add('hidden');
-    lightbox.classList.remove('flex');
-    document.body.style.overflow = '';
-    lightboxImg.src = '';
-  }
-
-  document.getElementById('lightbox-close')?.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
-  });
-</script>

@@ -1,46 +1,84 @@
 # ============================================
 # SERVICES
-# Edit this file to update service offerings
+# Edit the text for each service. Keep the indentation.
+#
+# code:   FS, PE, OS or VC — matches the code at the end of photo
+#         file names, so "See examples" shows the right photos
+# color:  yellow, lime, pink or sky (from src/styles/theme.css)
+# level:  1–4, how hands-on this service is (shown as a small meter)
 # ============================================
 
-hero_image: /images/heroshot_services.jpg
-
-intro: As your freelance partner, I help turn ideas into well-executed events through clear planning, thoughtful marketing, and dependable project management. I offer dynamic, agile support that adapts and evolves with your needs without sacrificing trust, quality, or team alignment.
-subtitle: "My services are flexible and tailored to your project's scope, duration, and deliverables:"
-
-addons: When needed, I collaborate with trusted partners to offer add-on services such as event photography, branding & creative strategy, digital & print design, web design, and social media management.
+heading: Event help, right where you need it.
+intro: Less stress for your team, a smoother event for your guests. Pick the support that fits.
 
 services:
-  - title: Full Service Event Coordination
-    description: For teams without internal event capacity needing a dedicated event lead.
+  - code: FS
+    title: Full Service
+    full_title: Full Service Event Coordination
+    color: yellow
+    level: 4
+    client_voice: We don't have anyone to run this.
+    short: No event lead? I'll own it from planning to wrap-up.
+    for: For teams without an event lead.
+    outcome: One contact, kickoff to debrief.
     items:
-      - End-to-end event planning
-      - Production and logistics
+      - End-to-end planning and logistics
       - Budget and vendor management
       - Program and experience design
-      - "On-site, virtual, or hybrid execution"
+      - On-site, virtual or hybrid execution
 
-  - title: Pre-Event Support Coordination
-    description: For teams that already have an event planner but need additional support in the final weeks.
+  - code: PE
+    title: Pre-Event Support
+    full_title: Pre-Event Support Coordination
+    color: lime
+    level: 3
+    client_voice: We have a planner, but the last weeks are a lot.
+    short: Have a planner? I'll help through the busy final weeks.
+    for: For teams with a planner who need hands in the final weeks.
+    outcome: Nothing slips in the busiest stretch.
     items:
-      - On-site execution and real-time troubleshooting
-      - Completion of run-of-show and production details
-      - Assistance with rehearsals and briefing internal teams or speakers
-      - "Final confirmation of logistics, vendor coordination, and timeline checks"
+      - Run-of-show and production details
+      - Rehearsals and speaker briefings
+      - Final checks on vendors and timelines
+      - Real-time troubleshooting on the day
 
-  - title: On-Site Management
-    description: "For teams needing a second person for set-up, tear-down, and everything in between."
+  - code: OS
+    title: On-Site
+    full_title: On-Site Management
+    color: pink
+    level: 2
+    client_voice: We need a pro on the ground to keep the day running smoothly.
+    short: A second person on the day, from setup to teardown.
+    for: For teams who need a second person on the ground.
+    outcome: You host. I keep the day on schedule.
     items:
-      - "Day-of event execution, troubleshooting, and overall supervision"
-      - "Vendor arrival, setup, and on-site coordination"
-      - Run-of-show management and timing oversight
-      - Attendee flow and experience management
+      - Vendor arrival and setup
+      - Run-of-show and timing
+      - Attendee flow
+      - Supervision, setup to teardown
 
-  - title: Virtual Event Consultation
-    description: For teams that need strategic support and professional insight throughout the planning process.
+  - code: VC
+    title: Virtual Consultation
+    full_title: Virtual Event Consultation
+    color: sky
+    level: 1
+    client_voice: We're running it, but want a pro in our corner.
+    short: Running it yourself? Get an expert in your corner.
+    for: For teams running their own event who want expert guidance.
+    outcome: Pro support without a full planner.
     items:
-      - "Platform setup, configuration, and management"
-      - Event planning and logistics consultation
-      - Speaker tech checks and rehearsal run-throughs
-      - Day-of virtual execution
-      - Live audience monitoring and support
+      - Platform setup and management
+      - Planning and logistics advice
+      - Speaker tech checks and rehearsals
+      - Day-of execution and audience monitoring
+
+addons:
+  heading: Need more?
+  heading_soft: I bring in trusted partners.
+  text: One point of contact, with the extras handled.
+  items:
+    - Event photography
+    - Branding & creative
+    - Digital & print design
+    - Web design
+    - Social media

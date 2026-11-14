@@ -1,0 +1,79 @@
+# ============================================
+# CLIENTS
+# One entry per organization. This list powers:
+#   - the logo wall on the homepage (in this order)
+#   - the Corporate / Nonprofit / Community filters on the Work page
+#
+# code:   short code used at the start of photo file names (e.g. PBP_...)
+# name:   full name shown on the site
+# sector: Corporate, Nonprofit, Community or Private
+# logo:   file name in src/assets/images/logos/ (leave blank if no logo)
+#
+# To add a client: copy a block, change the values, upload the logo.
+# ============================================
+
+clients:
+  - code: SHOPIFY
+    name: Shopify
+    sector: Corporate
+    logo: shopify.png
+
+  - code: PBP
+    name: PayByPhone
+    sector: Corporate
+    logo: paybyphone.png
+
+  - code: TED
+    name: TED
+    sector: Corporate
+    logo: ted.png
+
+  - code: DELOITTE
+    name: Deloitte
+    sector: Corporate
+    logo: deloitte.png
+
+  - code: EFRY
+    name: Elizabeth Fry Toronto
+    sector: Nonprofit
+    logo: elizabeth-fry-toronto.png
+
+  - code: BCSS
+    name: BC Schizophrenia Society
+    sector: Nonprofit
+    logo: bc-schizophrenia-society.png
+
+  - code: CANFAR
+    name: Canadian Foundation for AIDS Research
+    sector: Nonprofit
+    logo: canfar.png
+
+  - code: RPFF
+    name: Regent Park Film Festival
+    sector: Nonprofit
+    logo: regent-park-film-festival.png
+
+  - code: LBMG
+    name: LBMG
+    sector: Corporate
+    logo: lbmg.png
+
+  - code: TEMPO
+    name: Tempo
+    sector: Community
+    logo: tempo.png
+
+  - code: DIGNITY
+    name: Dignity Seniors Society
+    sector: Nonprofit
+    logo: dignity-seniors-society.png
+
+  - code: DPNCHC
+    name: Davenport-Perth Neighbourhood and Community Health Centre
+    sector: Nonprofit
+    logo: davenport-perth.png
+
+  - code: PRIVATE
+    name: Private client
+    sector: Private
+    logo:
