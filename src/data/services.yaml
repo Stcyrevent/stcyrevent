@@ -73,8 +73,8 @@ services:
       - Day-of execution and audience monitoring
 
 addons:
-  heading: Add-on services
-  heading_soft:
+  heading: Need more?
+  heading_soft: I bring in trusted partners.
   text: When needed, I collaborate with trusted partners to offer add-on services.
   items:
     - Event photography

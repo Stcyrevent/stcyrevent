@@ -5,8 +5,8 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <nav class="nav">
+  <a class="logo" href="/"><img src="/images/logo.png" alt={siteData.name} /></a>
   <div class="bar">
-    <a class="logo" href="/"><img src="/images/logo.png" alt={siteData.name} /></a>
     {siteData.nav.map((item: { label: string; href: string }) => (
       <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
     ))}

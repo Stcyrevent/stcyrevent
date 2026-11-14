@@ -17,6 +17,8 @@ socials:
     url: https://www.linkedin.com/company/st-cyr-event-co/
 
 nav:
+  - label: Home
+    href: /
   - label: Services
     href: /services
   - label: Work

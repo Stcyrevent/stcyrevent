@@ -274,3 +274,7 @@ footer.site .copy { border-top: 1px solid #3a3a3a; margin-top: 40px; padding-top
   background-color: color-mix(in srgb, var(--c) 70%, #fff); transition: background-color 1.4s cubic-bezier(.4,0,.2,1); }
 .hero-type .word { background: var(--ink); color: color-mix(in srgb, var(--c) 85%, #fff); transition: transform .5s var(--ease), opacity .5s, color 1.4s; }
 .hero-type .btn.light { border-color: transparent; }
+
+/* Logo sits outside the nav pill */
+.nav .bar { padding: 12px 26px; }
+@media (max-width: 860px) { .nav .bar { display: none; } }
