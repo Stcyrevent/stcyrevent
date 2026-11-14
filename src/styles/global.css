@@ -182,7 +182,7 @@ footer.site .copy { border-top: 1px solid #3a3a3a; margin-top: 40px; padding-top
 @media (max-width: 860px) { .picks { grid-template-columns: 1fr 1fr; } .panel { grid-template-columns: 1fr; gap: 28px; padding: 32px; position: relative; top: 0; } .head { flex-direction: column; align-items: flex-start; } }
 
 /* ---------- work page ---------- */
-.toolbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; position: sticky; top: 80px; z-index: 20; background: var(--paper); padding: 14px 0; margin-bottom: 12px; }
+.toolbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding: 14px 0; margin-bottom: 12px; }
 .filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .filters button { padding: 9px 16px; border-radius: 999px; background: #fff; font: inherit; font-size: 14px; font-weight: 500; border: 0; cursor: pointer; transition: background .2s; }
 .filters button.on { background: var(--ink); color: #fff; }
