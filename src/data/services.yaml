@@ -73,12 +73,12 @@ services:
       - Day-of execution and audience monitoring
 
 addons:
-  heading: Need more?
-  heading_soft: I bring in trusted partners.
-  text: One point of contact, with the extras handled.
+  heading: Add-on services
+  heading_soft:
+  text: When needed, I collaborate with trusted partners to offer add-on services.
   items:
     - Event photography
-    - Branding & creative
+    - Branding & creative strategy
     - Digital & print design
     - Web design
-    - Social media
+    - Social media management
