@@ -56,6 +56,7 @@ const large = await Promise.all(photos.map((p) => getImage({ src: p.src, width: 
       {photos.map((p, i) => (
         <button class="th" data-i={i} aria-label={`Open ${p.title}`}>
           <Image src={p.src} alt={`${p.title} — ${p.client}`} width={600} />
+          <span class="gcap"><b>{p.title}</b><span>{[p.client, p.serviceName].filter(Boolean).join(' · ')}</span></span>
         </button>
       ))}
     </div>
