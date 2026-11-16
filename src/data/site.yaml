@@ -1,20 +1,11 @@
-# ============================================
-# SITE CONFIGURATION
-# Edit this file to update site-wide content
-# ============================================
-
 name: St. Cyr Event Co.
 email: stcyr.event.co@gmail.com
 location: Vancouver, BC — Operating across Canada
-copyright: "© 2025 St. Cyr Event Co. All rights reserved."
-
-# Social links (add or remove as needed)
+copyright: © 2026 St. Cyr Event Co. All rights reserved.
 socials:
   - platform: LinkedIn
     url: https://www.linkedin.com/company/st-cyr-event-co/
     icon: linkedin
-
-# Navigation links
 nav:
   - label: Services
     href: /services
@@ -22,32 +13,45 @@ nav:
     href: /past-work
   - label: Get In Touch
     href: /get-in-touch
-
-# Homepage content
 hero:
   headline: St. Cyr Event Co.
-  tagline: A freelance consultancy specializing in event coordination, project management, and marketing support for lean teams who need extra capacity.
-
+  tagline: >-
+    A freelance consultancy specializing in event coordination, project
+    management, and marketing support for lean teams who need extra capacity.
 about:
-  intro: I help organizations plan and execute impactful events that feel thoughtful, organized, and aligned with their goals.
-  story: I chose my last name, St. Cyr, as the foundation of my business because it reflects how I work. I’ve learned that when events are planned with sincerity and care, the quality shows; leading to better experiences, stronger relationships, and work you can truly stand behind.
-  experience: With close to a decade of experience across corporate and non-profit sectors, I bring a calm, solutions-oriented approach to every engagement. Whether it's a multi-day offsite, a product launch, or a community event I offer practical support that helps teams stay focused and confident.
+  intro: >-
+    I help organizations plan and execute impactful events that feel thoughtful,
+    organized, and aligned with their goals.
+  story: >-
+    I chose my last name, St. Cyr, as the foundation of my business because it
+    reflects how I work. I’ve learned that when events are planned with
+    sincerity and care, the quality shows; leading to better experiences,
+    stronger relationships, and work you can truly stand behind.
+  experience: >-
+    With close to a decade of experience across corporate and non-profit
+    sectors, I bring a calm, solutions-oriented approach to every engagement.
+    Whether it's a multi-day offsite, a product launch, or a community event I
+    offer practical support that helps teams stay focused and confident.
   headshot: /src/assets/images/site/about/headshot.jpg
-
 organizations:
   heading: Organizations I've Worked With
-  description: Clients, employers, and collaborators across corporate, nonprofit, and community work.
+  description: >-
+    Clients, employers, and collaborators across corporate, nonprofit, and
+    community work.
   logos:
     - /images/logos/client-logos-1.png
     - /images/logos/client-logos-2.png
-
 contact:
   heading: Contact
-  intro: My freelance support offers more than an extra set of hands. It brings a fresh perspective, relevant experience, and a steady presence that helps events run smoothly.
-  closing: If you're looking for event support that's thoughtful, reliable, and genuinely collaborative, let's connect.
+  intro: >-
+    My freelance support offers more than an extra set of hands. It brings a
+    fresh perspective, relevant experience, and a steady presence that helps
+    events run smoothly.
+  closing: >-
+    If you're looking for event support that's thoughtful, reliable, and
+    genuinely collaborative, let's connect.
   photo: /src/assets/images/site/contact/photo.jpg
   photoAlt: Kendra St. Cyr coordinating an event
-
 cta:
   home: Ready to bring your next event to life?
   services: Interested in working together? Let's chat about your next event.
