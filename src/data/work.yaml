@@ -1,154 +1,202 @@
-# ============================================
-# PAST WORK / PORTFOLIO
-# Edit this file to add or update projects
-# Add images to public/images/work/
-# ============================================
-
 intro: Over my career, I have planned and executed over 95 events, including town halls, multi-day off-sites, product launches, AGMs, and client appreciation dinners. I've also negotiated over 45 vendor contracts and secured more than 15 sponsorships for cost-effective and high-value execution.
 heading: Projects Over the Years
 subtitle: My past work reflects a focus on events that inform audiences, engage prospects, and celebrate key moments.
-
 projects:
-  - image: /images/work/PBP_Client Appreciation-1.jpg
+  - id:
+      name: PBP_Client Appreciation-1
+      slug: pbp-client-appreciation-1
+    image: /src/assets/images/work/projects/pbp-client-appreciation-1/image.jpg
     caption: Client Appreciation Event
     category: Full Service Event Coordination
-
-  - image: /images/work/PBP_Client Appreciation Event_Pasta.PNG
+  - id:
+      name: PBP_Client Appreciation Event_Pasta
+      slug: pbp-client-appreciation-event-pasta
+    image: /src/assets/images/work/projects/pbp-client-appreciation-event-pasta/image.PNG
     caption: Client Appreciation Event
     category: Full Service Event Coordination
-   
-  - image: /images/work/EFry Toronto_AGM-FS 1.jpeg
+  - id:
+      name: EFry Toronto_AGM-FS 1
+      slug: efry-toronto-agm-fs-1
+    image: /src/assets/images/work/projects/efry-toronto-agm-fs-1/image.jpeg
     caption: Annual General Meeting/Panel Discussion
     category: Full Service Event Coordination
-
-  - image: /images/work/BCSS_Panel 1_FS.jpeg
+  - id:
+      name: BCSS_Panel 1_FS
+      slug: bcss-panel-1-fs
+    image: /src/assets/images/work/projects/bcss-panel-1-fs/image.jpeg
     caption: Awareness Event
-    category: Full Service Event Coordination   
-    
-  - image: /images/work/Shopify_Offsite-7.jpg
+    category: Full Service Event Coordination
+  - id:
+      name: Shopify_Offsite-7
+      slug: shopify-offsite-7
+    image: /src/assets/images/work/projects/shopify-offsite-7/image.jpg
     caption: Offsite
     category: Full Service Event Coordination
-
-  - image: /images/work/PBP_Client Appreciation-2.jpg
+  - id:
+      name: PBP_Client Appreciation-2
+      slug: pbp-client-appreciation-2
+    image: /src/assets/images/work/projects/pbp-client-appreciation-2/image.jpg
     caption: Client Appreciation Event
     category: Full Service Event Coordination
-
-  - image: /images/work/Tempo_Community Event 8.jpg
+  - id:
+      name: Tempo_Community Event 8
+      slug: tempo-community-event-8
+    image: /src/assets/images/work/projects/tempo-community-event-8/image.jpg
     caption: Community Event
-    category: Pre-Event Support Coordination  
-
-  - image: /images/work/PBP_Booth Activation-2.jpg
+    category: Pre-Event Support Coordination
+  - id:
+      name: PBP_Booth Activation-2
+      slug: pbp-booth-activation-2
+    image: /src/assets/images/work/projects/pbp-booth-activation-2/image.jpg
     caption: Trade Show Booth Activation
-    category: Full Service Event Coordination    
-
-  - image: /images/work/EFry Toronto_AGM_Virtual 5.JPG
-    caption: Annual General Meeting/Panel Discussion 
+    category: Full Service Event Coordination
+  - id:
+      name: EFry Toronto_AGM_Virtual 5
+      slug: efry-toronto-agm-virtual-5
+    image: /src/assets/images/work/projects/efry-toronto-agm-virtual-5/image.JPG
+    caption: Annual General Meeting/Panel Discussion
     category: Virtual Consultation
-
-  - image: /images/work/PBP_Client Appreciation-NS.PNG
+  - id:
+      name: PBP_Client Appreciation-NS
+      slug: pbp-client-appreciation-ns
+    image: /src/assets/images/work/projects/pbp-client-appreciation-ns/image.PNG
     caption: Client Appreciaition Event
-    category: Full Service Event Coordination  
-    
-  - image: /images/work/Shopify_Offsite-5.jpg
+    category: Full Service Event Coordination
+  - id:
+      name: Shopify_Offsite-5
+      slug: shopify-offsite-5
+    image: /src/assets/images/work/projects/shopify-offsite-5/image.jpg
     caption: Offsite
     category: Full Service Event Coordination
-    
-  - image: /images/work/Tempo_Community Event 1_PE.jpeg
-    caption: Community Event
-    category: Pre-Event Support Coordination  
-
-  - image: /images/work/EFry Toronto_Community Event 3.jpg
-    caption: Awareness Event
-    category: Pre-Event Support Coordination  
-
-  - image: /images/work/PBP_Client Appreciation-3.jpg
-    caption: Client Appreciation Event
-    category: Full Service Event Coordination
-
-  - image: /images/work/EFry Toronto_AGM_FS.HEIC
-    caption: Annual General Meeting/Panel Discussion
-    category: Full Service Event Coordination
-  
-  - image: /images/work/PBP_Client Appreciation-4.jpg
-    caption: Client Appreciation Event
-    category: Full Service Event Coordination
-
-  - image: /images/work/PBP_Client Appreciation-8.jpg
-    caption: Client Appreciation Event
-    category: Full Service Event Coordination
-
-  - image: /images/work/Shopify_Offsite-6.jpg
-    caption: Offsite
-    category: Full Service Event Coordination 
-
-  - image: /images/work/Small At Home Wedding_2-COVID.jpg
-    caption: Private Dinner
-    category: Full Service Event Coordination   
-
-  - image: /images/work/Shopify_Team Building.jpg
-    caption: Offsite
-    category: Full Service Event Coordination   
-
-  - image: /images/work/LBMG_PNE 4.JPG
-    caption: Community Event
-    category: On-Site Management 
-
-  - image: /images/work/Shopify_Offsite-2.jpg
-    caption: Offsite
-    category: Full Service Event Coordination
-
-  - image: /images/work/Tempo_Commmunity Event_Night.JPEG
+  - id:
+      name: Tempo_Community Event 1_PE
+      slug: tempo-community-event-1-pe
+    image: /src/assets/images/work/projects/tempo-community-event-1-pe/image.jpeg
     caption: Community Event
     category: Pre-Event Support Coordination
-
-  - image: /images/work/PBP_Client Appreciation Event_Pasta.PNG
+  - id:
+      name: EFry Toronto_Community Event 3
+      slug: efry-toronto-community-event-3
+    image: /src/assets/images/work/projects/efry-toronto-community-event-3/image.jpg
+    caption: Awareness Event
+    category: Pre-Event Support Coordination
+  - id:
+      name: PBP_Client Appreciation-3
+      slug: pbp-client-appreciation-3
+    image: /src/assets/images/work/projects/pbp-client-appreciation-3/image.jpg
     caption: Client Appreciation Event
     category: Full Service Event Coordination
-
-  - image: /images/work/Shopify_Offsite-3.jpg
+  - id:
+      name: EFry Toronto_AGM_FS
+      slug: efry-toronto-agm-fs
+    image: /src/assets/images/work/projects/efry-toronto-agm-fs/image.jpg
+    caption: Annual General Meeting/Panel Discussion
+    category: Full Service Event Coordination
+  - id:
+      name: PBP_Client Appreciation-4
+      slug: pbp-client-appreciation-4
+    image: /src/assets/images/work/projects/pbp-client-appreciation-4/image.jpg
+    caption: Client Appreciation Event
+    category: Full Service Event Coordination
+  - id:
+      name: PBP_Client Appreciation-8
+      slug: pbp-client-appreciation-8
+    image: /src/assets/images/work/projects/pbp-client-appreciation-8/image.jpg
+    caption: Client Appreciation Event
+    category: Full Service Event Coordination
+  - id:
+      name: Shopify_Offsite-6
+      slug: shopify-offsite-6
+    image: /src/assets/images/work/projects/shopify-offsite-6/image.jpg
     caption: Offsite
-    category: Full Service Event Coordination  
-
-  - image: /images/work/Shopify_Offsite-4.jpg
+    category: Full Service Event Coordination
+  - id:
+      name: Small At Home Wedding_2-COVID
+      slug: small-at-home-wedding-2-covid
+    image: /src/assets/images/work/projects/small-at-home-wedding-2-covid/image.jpg
+    caption: Private Dinner
+    category: Full Service Event Coordination
+  - id:
+      name: Shopify_Team Building
+      slug: shopify-team-building
+    image: /src/assets/images/work/projects/shopify-team-building/image.jpg
     caption: Offsite
-    category: Full Service Event Coordination  
-
-  - image: /images/work/PBP_Trade Show Booth-FS 1.jpg
+    category: Full Service Event Coordination
+  - id:
+      name: LBMG_PNE 4
+      slug: lbmg-pne-4
+    image: /src/assets/images/work/projects/lbmg-pne-4/image.JPG
+    caption: Community Event
+    category: On-Site Management
+  - id:
+      name: Shopify_Offsite-2
+      slug: shopify-offsite-2
+    image: /src/assets/images/work/projects/shopify-offsite-2/image.jpg
+    caption: Offsite
+    category: Full Service Event Coordination
+  - id:
+      name: Tempo_Commmunity Event_Night
+      slug: tempo-commmunity-event-night
+    image: /src/assets/images/work/projects/tempo-commmunity-event-night/image.JPEG
+    caption: Community Event
+    category: Pre-Event Support Coordination
+  - id:
+      name: Shopify_Offsite-3
+      slug: shopify-offsite-3
+    image: /src/assets/images/work/projects/shopify-offsite-3/image.jpg
+    caption: Offsite
+    category: Full Service Event Coordination
+  - id:
+      name: Shopify_Offsite-4
+      slug: shopify-offsite-4
+    image: /src/assets/images/work/projects/shopify-offsite-4/image.jpg
+    caption: Offsite
+    category: Full Service Event Coordination
+  - id:
+      name: PBP_Trade Show Booth-FS 1
+      slug: pbp-trade-show-booth-fs-1
+    image: /src/assets/images/work/projects/pbp-trade-show-booth-fs-1/image.jpg
     caption: Trade Show Booth
     category: Full Service Event Coordination
-
-  - image: /images/work/Shopify_Offsite-7.jpg
-    caption: Offsite
-    category: Full Service Event Coordination
-
-  - image: /images/work/Tempo_Community Event 2_PE.jpeg
+  - id:
+      name: Tempo_Community Event 2_PE
+      slug: tempo-community-event-2-pe
+    image: /src/assets/images/work/projects/tempo-community-event-2-pe/image.jpeg
     caption: Community Event
     category: Pre-Event Support Coordination
-
-  - image: /images/work/BCSS_Team Pic_FS.jpeg
+  - id:
+      name: BCSS_Team Pic_FS
+      slug: bcss-team-pic-fs
+    image: /src/assets/images/work/projects/bcss-team-pic-fs/image.jpeg
     caption: Awareness Event
-    category: Full Service Event Coordination 
-
-  - image: /images/work/EFry Toronto_AGM_Virtual.png
+    category: Full Service Event Coordination
+  - id:
+      name: EFry Toronto_AGM_Virtual
+      slug: efry-toronto-agm-virtual
+    image: /src/assets/images/work/projects/efry-toronto-agm-virtual/image.png
     caption: Annual General Meeting/Panel Discussion
     category: Virtual Consultation
-
-  - image: /images/work/EFryToronto_AGM_Virtual-3.png
+  - id:
+      name: EFryToronto_AGM_Virtual-3
+      slug: efrytoronto-agm-virtual-3
+    image: /src/assets/images/work/projects/efrytoronto-agm-virtual-3/image.png
     caption: Annual General Meeting/Panel Discussion
     category: Virtual Consultation
-
-  - image: /images/work/LBMG_PNE-2.jpg
+  - id:
+      name: LBMG_PNE-2
+      slug: lbmg-pne-2
+    image: /src/assets/images/work/projects/lbmg-pne-2/image.jpg
     caption: Community Event
-    category: On-Site Management 
-
-  - image: /images/work/PBP_Booth Activation-4.jpg
+    category: On-Site Management
+  - id:
+      name: PBP_Booth Activation-4
+      slug: pbp-booth-activation-4
+    image: /src/assets/images/work/projects/pbp-booth-activation-4/image.jpg
     caption: Trade Show Booth Activation
     category: Full Service Event Coordination
-
-  - image: /images/work/PBP_Booth_FS.jpg
+  - id:
+      name: PBP_Booth_FS
+      slug: pbp-booth-fs
+    image: /src/assets/images/work/projects/pbp-booth-fs/image.jpg
     caption: Trade Show Booth
-    category: Full Service Event Coordination
-
-  - image: /images/work/img_8571_original.jpg
-    caption: Event Coordination
     category: Full Service Event Coordination

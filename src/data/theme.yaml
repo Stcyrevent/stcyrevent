@@ -1,0 +1,33 @@
+brand:
+  salmon: "#fd8a6b"
+  green: "#8bbd6f"
+  cream: "#fcf9ea"
+  teal: "#2b4244"
+backgrounds:
+  hero: "#fcf9ea"
+  banner: "#2b4244"
+  sidebarLeft: "#fff799"
+  sidebarRight: "#ffffff"
+  footer: "#fcf9ea"
+buttons:
+  primary: "#ffad84"
+  filterActive: "#ffad84"
+tints:
+  sectionAlt:
+    color: "#8bbd6f"
+    opacity: 10
+  cta:
+    color: "#ffad84"
+    opacity: 10
+  blockquote:
+    color: "#ffad84"
+    opacity: 5
+  accordion:
+    color: "#8bbd6f"
+    opacity: 10
+  accordionHover:
+    color: "#8bbd6f"
+    opacity: 20
+  filterButton:
+    color: "#2b4244"
+    opacity: 10
