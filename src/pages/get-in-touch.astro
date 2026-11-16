@@ -3,10 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { readFileSync } from 'fs';
 import { parse } from 'yaml';
+import { getImage } from '../lib/images';
 
 const siteData = parse(readFileSync('src/data/site.yaml', 'utf-8'));
 
-const contactHero = (await import('../assets/images/contact-hero.jpg')).default;
+const contactHero = getImage(siteData.contact.photo);
 ---
 
 <Layout title="Get In Touch" description="Contact St. Cyr Event Co. for freelance event coordination, project management, and marketing support.">
@@ -15,13 +16,9 @@ const contactHero = (await import('../assets/images/contact-hero.jpg')).default;
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         <!-- Left: Text + Form -->
         <div class="reveal">
-          <h1 class="text-4xl md:text-5xl font-light text-teal mb-6">Contact</h1>
-          <p class="text-lg leading-relaxed text-teal/80 mb-4">
-            My freelance support offers more than an extra set of hands. It brings a fresh perspective, relevant experience, and a steady presence that helps events run smoothly.
-          </p>
-          <p class="text-lg leading-relaxed text-teal/80 mb-10">
-            If you're looking for event support that's thoughtful, reliable, and genuinely collaborative, let's connect.
-          </p>
+          <h1 class="text-4xl md:text-5xl font-light text-teal mb-6">{siteData.contact.heading}</h1>
+          <p class="text-lg leading-relaxed text-teal/80 mb-4">{siteData.contact.intro}</p>
+          <p class="text-lg leading-relaxed text-teal/80 mb-10">{siteData.contact.closing}</p>
 
           <form
             id="contact-form"
@@ -79,19 +76,21 @@ const contactHero = (await import('../assets/images/contact-hero.jpg')).default;
 
           <!-- Error Message -->
           <div id="form-error" class="hidden py-4 px-5 bg-red-50 border border-red-200 rounded-sm">
-            <p class="text-red-700">Something went wrong. Please try again or email directly at <a href="mailto:stcyr.event.co@gmail.com" class="underline">stcyr.event.co@gmail.com</a>.</p>
+            <p class="text-red-700">Something went wrong. Please try again or email directly at <a href={`mailto:${siteData.email}`} class="underline">{siteData.email}</a>.</p>
           </div>
         </div>
 
         <!-- Right: Image -->
-        <div class="hidden md:block reveal">
-          <Image
-            src={contactHero}
-            alt="Kendra St. Cyr coordinating an event"
-            class="w-full h-auto rounded object-cover aspect-[9/16] max-h-[700px]"
-            width={600}
-          />
-        </div>
+        {contactHero && (
+          <div class="hidden md:block reveal">
+            <Image
+              src={contactHero}
+              alt={siteData.contact.photoAlt || ''}
+              class="w-full h-auto rounded object-cover aspect-[9/16] max-h-[700px]"
+              width={600}
+            />
+          </div>
+        )}
       </div>
     </div>
   </section>
